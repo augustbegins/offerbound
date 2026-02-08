@@ -1,4 +1,6 @@
 class JobApplicationsController < ApplicationController
+  before_action :set_job_applicaiton, only: [ :show, :update, :destroy ]
+
   def index
     matching_job_applications = JobApplication.all
 
@@ -8,7 +10,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def show
-    the_id = params.fetch("path_id")
+    the_id = params.fetch("id")
 
     matching_job_applications = JobApplication.where({ :id => the_id })
 
@@ -62,5 +64,11 @@ class JobApplicationsController < ApplicationController
     the_job_application.destroy
 
     redirect_to("/job_applications", { :notice => "Job application deleted successfully." } )
+  end
+
+  private
+
+  def set_job_applicaiton
+    @job_application = job_application_scope.find(params.fetch(:id))
   end
 end

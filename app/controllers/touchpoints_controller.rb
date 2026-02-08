@@ -1,4 +1,7 @@
 class TouchpointsController < ApplicationController
+  before_action :set_job_applicaiton
+  before_action :set_touchpoint, only: [ :show, :edit, :update, :destroy ]
+
   def index
     matching_touchpoints = Touchpoint.all
 
@@ -58,5 +61,15 @@ class TouchpointsController < ApplicationController
     the_touchpoint.destroy
 
     redirect_to("/touchpoints", { :notice => "Touchpoint deleted successfully." } )
+  end
+
+  private
+
+  def set_job_applicaiton
+    @job_application = job_application_scope.find(params.fetch(:job_application_id))
+  end
+
+  def set_touchpoint 
+    @touchpoint = @job_application.touchpoints.find(params.fetch(:id))
   end
 end
