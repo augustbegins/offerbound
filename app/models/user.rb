@@ -27,7 +27,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :job_applications
+  has_many :job_applications, class_name: "JobApplication", foreign_key: "user_id", dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
 end

@@ -1,0 +1,126 @@
+<h1>
+  Touchpoint #<%= @the_touchpoint.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/touchpoints">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_touchpoint/<%= @the_touchpoint.id %>">
+      Delete touchpoint
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Job application
+    </dt>
+    <dd>
+      <%= @the_touchpoint.job_application_id %>
+    </dd>
+
+    <dt>
+      Occurred at
+    </dt>
+    <dd>
+      <%= @the_touchpoint.occurred_at %>
+    </dd>
+
+    <dt>
+      Category
+    </dt>
+    <dd>
+      <%= @the_touchpoint.category %>
+    </dd>
+
+    <dt>
+      Notes
+    </dt>
+    <dd>
+      <%= @the_touchpoint.notes %>
+    </dd>
+
+    <dt>
+      Short description
+    </dt>
+    <dd>
+      <%= @the_touchpoint.short_description %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_touchpoint.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_touchpoint.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit touchpoint
+    </h2>
+  </header>
+
+  <form action="/modify_touchpoint/<%= @the_touchpoint.id %>"  method="post" >
+    <div>
+      <label for="job_application_id_box">
+        Job application
+      </label>
+
+      <input type="text" id="job_application_id_box" name="query_job_application_id" value="<%= @the_touchpoint.job_application_id %>">
+    </div>
+
+    <div>
+      <label for="occurred_at_box">
+        Occurred at
+      </label>
+
+      <input type="date" id="occurred_at_box" name="query_occurred_at" value="<%= @the_touchpoint.occurred_at %>">
+    </div>
+
+    <div>
+      <label for="category_box">
+        Category
+      </label>
+
+      <input type="text" id="category_box" name="query_category" value="<%= @the_touchpoint.category %>">
+    </div>
+
+    <div>
+      <label for="notes_box">
+        Notes
+      </label>
+
+      <input type="text" id="notes_box" name="query_notes" value="<%= @the_touchpoint.notes %>">
+    </div>
+
+    <div>
+      <label for="short_description_box">
+        Short description
+      </label>
+
+      <input type="text" id="short_description_box" name="query_short_description" value="<%= @the_touchpoint.short_description %>">
+    </div>
+
+    <button type="submit">
+      Update touchpoint
+    </button>
+  </form>
+</article>
+
+<hr>

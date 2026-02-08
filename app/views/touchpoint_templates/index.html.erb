@@ -1,0 +1,75 @@
+<h1>
+  List of all touchpoints
+</h1>
+
+<hr>
+
+<article>
+  <header>
+    <h2>
+      Add a new touchpoint
+    </h2>
+  </header>
+
+  <form action="/insert_touchpoint" method="post">
+    <div>
+      <label for="job_application_id_box">
+        Job application
+      </label>
+
+      <input type="text" id="job_application_id_box" name="query_job_application_id">
+    </div>
+
+    <div>
+      <label for="occurred_at_box">
+        Occurred at
+      </label>
+
+      <input type="date" id="occurred_at_box" name="query_occurred_at">
+    </div>
+
+    <div>
+      <label for="category_box">
+        Category
+      </label>
+
+      <input type="text" id="category_box" name="query_category">
+    </div>
+
+    <div>
+      <label for="notes_box">
+        Notes
+      </label>
+
+      <input type="text" id="notes_box" name="query_notes">
+    </div>
+
+    <div>
+      <label for="short_description_box">
+        Short description
+      </label>
+
+      <input type="text" id="short_description_box" name="query_short_description">
+    </div>
+
+    <button type="submit">
+      Create touchpoint
+    </button>
+  </form>
+</article>
+
+<hr>
+
+<article>
+  <ul>
+    <% @list_of_touchpoints.each do |a_touchpoint| %>
+      <li>
+        <a href="/touchpoints/<%= a_touchpoint.id %>">
+          Touchpoint #<%= a_touchpoint.id %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</article>
+
+<hr>
