@@ -3,7 +3,7 @@
 # Table name: touchpoints
 #
 #  id                 :bigint           not null, primary key
-#  category           :string
+#  category           :integer
 #  notes              :text
 #  occurred_at        :date
 #  short_description  :string
