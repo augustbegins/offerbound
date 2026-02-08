@@ -10,6 +10,7 @@
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  resume                 :string
+#  role                   :integer
 #  skills                 :text
 #  username               :citext
 #  created_at             :datetime         not null
@@ -28,6 +29,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :job_applications, class_name: "JobApplication", foreign_key: "user_id", dependent: :destroy
+
+  enum :role, [:user, :admin]
 
   validates :email, presence: true, uniqueness: true
 end

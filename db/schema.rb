@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_08_091807) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_08_100826) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -172,11 +172,11 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_08_091807) do
   create_table "touchpoints", force: :cascade do |t|
     t.integer "job_application_id"
     t.date "occurred_at"
-    t.string "category"
     t.text "notes"
     t.string "short_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category"
   end
 
   create_table "users", force: :cascade do |t|
@@ -191,6 +191,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_08_091807) do
     t.string "avatar_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
