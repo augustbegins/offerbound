@@ -1,25 +1,51 @@
-<div class="text-end">
-  <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
-</div>
+<div class="container">
 
-<hr>
+  <div class="d-flex justify-content-end ps-5">
+    <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
+  </div>
 
-<div class="carousel slide" id="cardCarousel">
-  <div class="carouself-inner">
-    <% @job_applications.each_with_index do |job_application, i| %>
-      <div class="carousel-item <%= "active" if i == 0 %>"%>
-        <div class="card mx-auto" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-header text-wrap">
-              <%= job_application.company_name.titleize %>
-            </h5>
-            <h6 class="card-subtitle text-center mt-1">
-              Application submitted on <%= job_application.due_date.strftime("%b %d") %>
-            </h6>
+  <div class="pt-5 mt-5">
+    <div class="carousel slide" id="cardCarousel">
+      <div class="carousel-inner">
+        <% @job_applications.each_with_index do |job_application, i| %>
+          <div class="carousel-item <%= "active" if i == 0 %>"%>
+            <div class="card mx-auto my-5" style="min-height: 24rem; max-width: 48rem;" >
+              <div class="card-header d-flex justify-content-between flex-wrap align-items-center px-5">
+                <div> <%= job_application.company_name.titleize %> </div>
+                <div> Application Due On: <%= job_application.due_date.strftime("%b %d") %> </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title d-flex justify-content-center position-relative mb-4 pt-3">
+                  <span class="mx-auto text-uppercase fs-3"> <%= job_application.job_title %> </span>
+                  <span class="badge rounded-pill text-bg-info position-absolute end-0"> <%= job_application.status %> </span>
+                </h5>
+                <div class="card-text text-center mt-1 py-3">
+                  <div class="container">
+                    <div class="row justify-content-center">
+                      <div class="col-6">
+                        <span class="mx-auto"> <%= job_application.job_description %></span>
+                      </div>
+                    </div>
+                    <div class="row justify-content-between pt-5">
+                      <div class="col-6">
+                        <%= link_to( "Edit Application Details", edit_job_application_path(job_application.id), class: "btn btn-secondary" )%>
+                      </div>
+                      <div class="col-6">
+                        <%= link_to( "Add New Touchpoint", new_job_application_path(job_application.id), class: "btn btn-primary" )%>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+
+              </div>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 
   <button class="carousel-control-prev" data-bs-target="#cardCarousel" data-bs-slide="prev">
@@ -29,6 +55,3 @@
   <button class="carousel-control-next" data-bs-target="#cardCarousel" data-bs-slide="next">
     <i class="fa-solid fa-chevron-right"></i>
   </button>
-</div>
-
-<hr>
