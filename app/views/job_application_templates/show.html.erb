@@ -1,0 +1,156 @@
+<h1>
+  Job application #<%= @the_job_application.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/job_applications">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_job_application/<%= @the_job_application.id %>">
+      Delete job application
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Company name
+    </dt>
+    <dd>
+      <%= @the_job_application.company_name %>
+    </dd>
+
+    <dt>
+      Job title
+    </dt>
+    <dd>
+      <%= @the_job_application.job_title %>
+    </dd>
+
+    <dt>
+      User
+    </dt>
+    <dd>
+      <%= @the_job_application.user_id %>
+    </dd>
+
+    <dt>
+      Job description
+    </dt>
+    <dd>
+      <%= @the_job_application.job_description %>
+    </dd>
+
+    <dt>
+      Status
+    </dt>
+    <dd>
+      <%= @the_job_application.status %>
+    </dd>
+
+    <dt>
+      Due date
+    </dt>
+    <dd>
+      <%= @the_job_application.due_date %>
+    </dd>
+
+    <dt>
+      Interviews count
+    </dt>
+    <dd>
+      <%= @the_job_application.interviews_count %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_job_application.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_job_application.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit job application
+    </h2>
+  </header>
+
+  <form action="/modify_job_application/<%= @the_job_application.id %>"  method="post" >
+    <div>
+      <label for="company_name_box">
+        Company name
+      </label>
+
+      <input type="text" id="company_name_box" name="query_company_name" value="<%= @the_job_application.company_name %>">
+    </div>
+
+    <div>
+      <label for="job_title_box">
+        Job title
+      </label>
+
+      <input type="text" id="job_title_box" name="query_job_title" value="<%= @the_job_application.job_title %>">
+    </div>
+
+    <div>
+      <label for="user_id_box">
+        User
+      </label>
+
+      <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_job_application.user_id %>">
+    </div>
+
+    <div>
+      <label for="job_description_box">
+        Job description
+      </label>
+
+      <input type="text" id="job_description_box" name="query_job_description" value="<%= @the_job_application.job_description %>">
+    </div>
+
+    <div>
+      <label for="status_box">
+        Status
+      </label>
+
+      <input type="text" id="status_box" name="query_status" value="<%= @the_job_application.status %>">
+    </div>
+
+    <div>
+      <label for="due_date_box">
+        Due date
+      </label>
+
+      <input type="date" id="due_date_box" name="query_due_date" value="<%= @the_job_application.due_date %>">
+    </div>
+
+    <div>
+      <label for="interviews_count_box">
+        Interviews count
+      </label>
+
+      <input type="text" id="interviews_count_box" name="query_interviews_count" value="<%= @the_job_application.interviews_count %>">
+    </div>
+
+    <button type="submit">
+      Update job application
+    </button>
+  </form>
+</article>
+
+<hr>
