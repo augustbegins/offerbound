@@ -15,7 +15,7 @@
 #
 class JobApplication < ApplicationRecord
   belongs_to :user, required: true, class_name: "User", foreign_key: "user_id"
-  has_many :touchpoints, class_name: "Touchpoints", foreign_key: "job_application_id", dependent: :destroy
+  has_many :touchpoints, class_name: "Touchpoint", foreign_key: "job_application_id", dependent: :destroy
   enum :status, { planning: 0, applied: 1, interviewing: 2, offered: 3, rejected: 4 }
   validates :company_name, :job_title, :status, presence: true
 end
