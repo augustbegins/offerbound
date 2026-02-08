@@ -1,0 +1,34 @@
+<div class="text-end">
+  <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
+</div>
+
+<hr>
+
+<div class="carousel slide" id="cardCarousel">
+  <div class="carouself-inner">
+    <% @job_applications.each_with_index do |job_application, i| %>
+      <div class="carousel-item <%= "active" if i == 0 %>"%>
+        <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-header text-wrap">
+              <%= job_application.company_name.titleize %>
+            </h5>
+            <h6 class="card-subtitle text-center mt-1">
+              Application submitted on <%= job_application.due_date.strftime("%b %d") %>
+            </h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <button class="carousel-control-prev" data-bs-target="#cardCarousel" data-bs-slide="prev">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+
+  <button class="carousel-control-next" data-bs-target="#cardCarousel" data-bs-slide="next">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</div>
+
+<hr>

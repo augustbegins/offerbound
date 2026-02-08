@@ -12,7 +12,7 @@
 #  job_application_id :integer
 #
 class Touchpoint < ApplicationRecord
-  belongs_to :application, required: true, class_name: "JobApplication", foreign_key: "job_application_id", counter_cache: :interviews_count
+  belongs_to :application, required: true, class_name: "JobApplication", foreign_key: "job_application_id", counter_cache: :touchpoints_count
   enum :category, { inbound_email: 0, outreach: 1, interview: 2, reflection: 3, other: 4 }
   validates :category, :short_description, :notes, :occurred_at, presence: true 
 end
