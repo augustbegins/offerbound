@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
-  # This is a blank app! Pick your first screen, build out the RCAV, and go from there. E.g.:
-  # get("/your_first_screen", { :controller => "pages", :action => "first" })
+  # Routes for the Touchpoint resource:
+  resources :touchpoints
+
+  #------------------------------
+
+  # Routes for the Job application resource:
+  resources :job_applications
+
+  #------------------------------
+
+  devise_for :users
+ 
+  root to: "job_applications#index"
+  
 end
