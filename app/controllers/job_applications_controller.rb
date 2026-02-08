@@ -6,11 +6,11 @@ class JobApplicationsController < ApplicationController
     @job_applications = @job_applications.order(:created_at)
   end
   
+  def show
+  end
+  
   def new
     @job_application = current_user.job_application.build
-  end
-
-  def show
   end
 
   def create
