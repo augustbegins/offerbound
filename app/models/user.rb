@@ -30,7 +30,7 @@ class User < ApplicationRecord
   
   has_many :job_applications, class_name: "JobApplication", foreign_key: "user_id", dependent: :destroy
 
-  enum :role, [:user, :admin]
+  enum :role, { user: 0, admin: 1 }
 
   validates :email, presence: true, uniqueness: true
 end
