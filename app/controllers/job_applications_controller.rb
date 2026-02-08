@@ -1,5 +1,5 @@
 class JobApplicationsController < ApplicationController
-  before_action :set_job_applicaiton, only: [:show, :update, :destroy]
+  before_action :set_job_applicaiton, only: [:show, :update, :destroy, :edit]
 
   def index
     @job_applications = job_application_scope
@@ -10,11 +10,11 @@ class JobApplicationsController < ApplicationController
   end
   
   def new
-    @job_application = current_user.job_application.build
+    @job_application = current_user.job_applications.build
   end
 
   def create
-    @job_application = current_user.job_application.build(job_application_params)
+    @job_application = current_user.job_applications.build(job_application_params)
     if @job_application.valid?
       @job_application.save
       redirect_to job_applications_url, :notice => "Job application created successfully."

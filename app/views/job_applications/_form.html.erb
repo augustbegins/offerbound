@@ -1,0 +1,39 @@
+
+<% @job_application.errors.full_messages.each do |message| %>
+  <p style="color: red;"><%= message %> </p>
+<% end %>
+
+<div class="container">
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <%= form_with(model: @job_application) do |form| %>
+        <div class="mb-3">
+          <%= form.label :job_title, class: "form-label" %>
+          <%= form.text_field :job_title, class: "form-control"%>
+        </div>
+        <div class="mb-3">
+          <%= form.label :company_name, class: "form-label" %>
+          <%= form.text_field :company_name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :job_description, class: "form-label" %>
+          <%= form.textarea :job_description, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :due_date, class: "form-label" %>
+          <%= form.date_field :due_date, class: "form-control" %>
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-md-8 mb-3">
+            <%= form.label :status, class: "form-label"%>
+            <%= form.select :status, JobApplication.statuses.keys, class: "form-select form-select-lg" %>
+          </div>
+        </div>
+        <div class=" row justify-content-center">
+          <div class="col-md-8">
+            <%= form.button class: "btn btn-primary btn-sm mt-5" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
