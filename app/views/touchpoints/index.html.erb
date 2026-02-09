@@ -1,5 +1,68 @@
-<h1>
-  Touchpoints for <%= @job_application.job_title %> with <%= @job_application.company_name %>
-</h1>
 
-<hr>
+<div class="container">
+
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-1 text-center">
+        <% if @prev_job_app %>
+        <%= link_to job_application_touchpoints_path(@prev_job_app) do %>
+          <i class="fa-solid fa-chevron-left fa-3x" style="color: blue;"></i>
+        <% end %>
+      <% end %>
+      </div>
+      <div class="p-2 col-md-8">
+        <div class="card mx-auto my-5">
+          <div class="card-header">
+            <h2 class="row justify-content-center">
+              <%= @job_application.job_title.upcase_first %> at <%= @job_application.company_name%>
+            </h2>
+            <div class="card-body">
+              <span>
+                <%= @job_application.job_description %>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 text-center">
+        <% if @next_job_app %>
+        <%= link_to job_application_touchpoints_path(@next_job_app) do %>
+          <i class="fa-solid fa-chevron-right fa-3x" style="color: blue;"></i>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="row">
+      <h3 class="col-md-8 offset-md-1"> Timeline </h3>
+      <hr class="mt-1 mb-3 offset-md-1" style="width: 80%;">
+    </div>
+    <% @job_application.touchpoints.each do |touchpoint| %>
+      <%= link_to touchpoint_path(touchpoint.id), class: "text-decoration-none text-dark d-block" do %>
+        <div class="d-flex justify-content-end ms-5 my-1">
+          <div class="col-1 d-flex align-items-center text-end justify-content-end p-1">
+            <small><%= touchpoint.occurred_at.strftime("%b %d") %></small>
+          </div>
+
+          <div class="col-1 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="col-2 d-flex align-items-center justify-content-start">
+            <h6 class="p-2"> <span class="badge text-bg-info px-3 py-2"><%= touchpoint.category %> </span></h6>
+          </div>
+          <div class="col-8 d-flex align-items-center mb-1">
+              <div class="card">
+                <div class="card-body">
+                  <div class="fs-6 justify-content-start">
+                    <%= touchpoint.short_description %>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>

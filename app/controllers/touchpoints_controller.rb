@@ -4,6 +4,12 @@ class TouchpointsController < ApplicationController
 
   def index
     @touchpoints = @job_application.touchpoints
+    @job_applications = job_application_scope
+    @job_applications = @job_applications.order(:created_at)
+    job_application_ids = @job_applications.pluck(:id)
+    current_index = job_application_ids.index(@job_application.id)
+    @prev_job_app = current_index && current_index > 0 ? @job_applications[current_index - 1] : nil
+    @next_job_app = current_index && current_index < job_application_ids.length - 1 ? @job_applications[current_index + 1] : nil
   end
 
   def show
@@ -31,7 +37,7 @@ class TouchpointsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     @touchpoint.assign_attributes(touchpoint_params)
 
@@ -39,7 +45,7 @@ class TouchpointsController < ApplicationController
       @touchpoint.save
       redirect_to job_application_touchpoints_url(@touchpoint.id), :notice => "Touchpoint updated successfully."
     else
-      redirect_to job_application_touchpoints_url(@touchpoint.id),  :alert => the_touchpoint.errors.full_messages.to_sentence
+      redirect_to job_application_touchpoints_url(@touchpoint.id), :alert => the_touchpoint.errors.full_messages.to_sentence
     end
   end
 
@@ -57,8 +63,8 @@ class TouchpointsController < ApplicationController
 
   def set_touchpoint
     @touchpoint = find_scoped!(
-      Touchpoint.within_job_applications(job_application_scope), 
-      id: params.fetch(:id)
+      Touchpoint.within_job_applications(job_application_scope),
+      id: params.fetch(:id),
     )
     @job_application = @touchpoint.job_application
   end
