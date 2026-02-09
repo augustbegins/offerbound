@@ -1,8 +1,8 @@
 <div class="container">
-
-  <div class="d-flex justify-content-end ps-5">
+  <div class="d-flex justify-content-end ps-5 position-relative" style="z-index: 10;">
     <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
   </div>
+
 
   <div class="pt-1 mt-1">
     <div class="carousel slide" id="cardCarousel">
@@ -33,7 +33,7 @@
                           <%= link_to( "Edit Application Details", edit_job_application_path(job_application.id), class: "btn btn-secondary" )%>
                         </div>
                         <div class="col-6">
-                          <%= link_to( "Add New Touchpoint", new_job_application_path(job_application.id), class: "btn btn-primary" )%>
+                          <%= link_to( "Add New Touchpoint", new_job_application_touchpoint_path(job_application.id), class: "btn btn-primary" )%>
                         </div>
 
                       </div>
