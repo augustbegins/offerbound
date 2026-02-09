@@ -1,150 +1,56 @@
-<h1>
-  Job application #<%= @the_job_application.id %> details
-</h1>
+<div class="container my-5">
+  <h1>
+  </h1>
 
-<article>
-  <div>
-    <a href="/job_applications">
-      Go back
-    </a>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="p-2 col-md-8">
+        <div class="card mx-auto my-5">
+          <div class="card-header">
+            <h2 class="row justify-content-center">
+              <%= @job_application.job_title.upcase_first %> at <%= @job_application.company_name%>
+            </h2>
+            <div class="card-body">
+              <span>
+                <%= @job_application.job_description %>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
+  <div class="">
+    <div class="row">
+      <h3 class="col-md-8 offset-md-1"> Timeline </h3>
+      <hr class="mt-1 mb-3 offset-md-1" style="width: 80%;">
+    </div>
+    <% @job_application.touchpoints.each do |touchpoint| %>
+      <%= link_to touchpoint_path(touchpoint.id), class: "text-decoration-none tex-dark d-block" do %>
+        <div class="d-flex justify-content-end ms-5 my-1">
+          <div class="col-1 d-flex align-items-center text-end justify-content-end p-1">
+            <small class=""><%= touchpoint.occurred_at.strftime("%b %d") %></small>
+          </div>
 
-  <div>
-    <a href="/delete_job_application/<%= @the_job_application.id %>">
-      Delete job application
-    </a>
+          <div class="col-1 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="col-2 d-flex align-items-center justify-content-start">
+            <h6 class="p-2"> <span class="badge text-bg-info px-3 py-2"><%= touchpoint.category %> </span></h6>
+          </div>
+          <div class="col-8 d-flex align-items-center mb-1">
+            <div class="card">
+              <div class="card-body">
+                <div class="fs-6 justify-content-start">
+                  <%= touchpoint.short_description %>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  <dl>
-    <dt>
-      Company name
-    </dt>
-    <dd>
-      <%= @the_job_application.company_name %>
-    </dd>
-
-    <dt>
-      Job title
-    </dt>
-    <dd>
-      <%= @the_job_application.job_title %>
-    </dd>
-
-    <dt>
-      User
-    </dt>
-    <dd>
-      <%= @the_job_application.user_id %>
-    </dd>
-
-    <dt>
-      Job description
-    </dt>
-    <dd>
-      <%= @the_job_application.job_description %>
-    </dd>
-
-    <dt>
-      Status
-    </dt>
-    <dd>
-      <%= @the_job_application.status %>
-    </dd>
-
-    <dt>
-      Due date
-    </dt>
-    <dd>
-      <%= @the_job_application.due_date %>
-    </dd>
-
-    <dt>
-      touchpoints count
-    </dt>
-    <dd>
-      <%= @the_job_application.touchpoints_count %>
-    </dd>
-
-    <dt>
-      Created at
-    </dt>
-    <dd>
-      <%= time_ago_in_words(@the_job_application.created_at) %> ago
-    </dd>
-
-    <dt>
-      Updated at
-    </dt>
-    <dd>
-      <%= time_ago_in_words(@the_job_application.updated_at) %> ago
-    </dd>
-  </dl>
-</article>
-
-<hr>
-
-
-<article>
-  <header>
-    <h2>
-      Edit job application
-    </h2>
-  </header>
-
-  <form action="/modify_job_application/<%= @the_job_application.id %>"  method="post" >
-    <div>
-      <label for="company_name_box">
-        Company name
-      </label>
-
-      <input type="text" id="company_name_box" name="query_company_name" value="<%= @the_job_application.company_name %>">
-    </div>
-
-    <div>
-      <label for="job_title_box">
-        Job title
-      </label>
-
-      <input type="text" id="job_title_box" name="query_job_title" value="<%= @the_job_application.job_title %>">
-    </div>
-
-    <div>
-      <label for="user_id_box">
-        User
-      </label>
-
-      <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_job_application.user_id %>">
-    </div>
-
-    <div>
-      <label for="job_description_box">
-        Job description
-      </label>
-
-      <input type="text" id="job_description_box" name="query_job_description" value="<%= @the_job_application.job_description %>">
-    </div>
-
-    <div>
-      <label for="status_box">
-        Status
-      </label>
-
-      <input type="text" id="status_box" name="query_status" value="<%= @the_job_application.status %>">
-    </div>
-
-    <div>
-      <label for="due_date_box">
-        Due date
-      </label>
-
-      <input type="date" id="due_date_box" name="query_due_date" value="<%= @the_job_application.due_date %>">
-    </div>
-
-
-
-    <button type="submit">
-      Update job application
-    </button>
-  </form>
-</article>
-
-<hr>
+</div>
