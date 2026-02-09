@@ -106,9 +106,10 @@ unless Rails.env.production?
               short_description: "Submitted application through company portal.",
               notes: "Completed and submitted the application through the Shopify careers portal. Double-checked resume formatting and confirmed all required documents were included. Logged the submission date for future follow-up.",
             },
-            { 
+            {
               short_description: "Had Zoom coffee chat with current employee.",
-              notes: "Scheduled a 30-minute Zoom coffee chat with a Shopify engineer who joined through an early-career program. We talked about interview preparation, team culture, and what projects helped them stand out. They recommended focusing on data structures and clear communication during interviews." },
+              notes: "Scheduled a 30-minute Zoom coffee chat with a Shopify engineer who joined through an early-career program. We talked about interview preparation, team culture, and what projects helped them stand out. They recommended focusing on data structures and clear communication during interviews.",
+            },
           ],
         },
       ]
@@ -130,6 +131,12 @@ unless Rails.env.production?
         user = User.find_by(email: email)
 
         seed = job_app_seed_data.sample
+        
+        next if JobApplication.exists?(
+          user: user,
+          company_name: seed[:company_name],
+          job_title: seed[:job_title],
+        )
 
         job_app = JobApplication.create(
           user: user,
