@@ -1,0 +1,43 @@
+
+<% @job_application.errors.full_messages.each do |message| %>
+  <p style="color: red;"><%= message %> </p>
+<% end %>
+
+<div class="container">
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-3">
+      <%= form_with(model: form_object) do |form| %>
+        <div class="mb-3">
+          <%= form.label :occurred_at, class: "form-label" %>
+          <%= form.date_field :occurred_at, class: "form-control" %>
+        </div>
+        <div class="row justify-content-start">
+          <div class="col-md-8 mb-3">
+            <%= form.label :category, class: "form-label"%>
+            <%= form.select :category, Touchpoint.categories.keys, class: "form-select form-select-lg" %>
+          </div>
+        </div>
+        <div class="mb-3">
+          <%= form.label :short_description, class: "form-label" %>
+          <%= form.textarea :short_description, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :notes, class: "form-label" %>
+          <%= form.textarea :notes, class: "form-control" %>
+        </div>
+        
+        <div class=" row justify-content-between">
+          <div class="col-md-1">
+            <%= link_to job_application_touchpoints_path(@job_application.id), class: "btn btn-secondary mt-5" do %>
+              <i class="fa fa-window-close"></i>
+            <% end %>
+          </div>
+          <div class="col-md-3">
+            <%= form.button class: "btn btn-success mt-5" do  %>
+              <i class="fa fa-check-square"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
