@@ -7,6 +7,11 @@ class TouchpointsController < ApplicationController
   end
 
   def show
+    @touchpoints = @job_application.touchpoints.order(:occurred_at)
+    touchpoint_ids = @touchpoints.pluck(:id)
+    current_index = touchpoint_ids.index(@touchpoint.id)
+    @prev_touchpoint = current_index && current_index > 0 ? @touchpoints[current_index - 1] : nil
+    @next_touchpoint = current_index && current_index < touchpoint_ids.length - 1 ? @touchpoints[current_index + 1] : nil
   end
 
   def new
