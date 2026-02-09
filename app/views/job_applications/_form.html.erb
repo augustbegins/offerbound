@@ -29,9 +29,16 @@
             <%= form.select :status, JobApplication.statuses.keys, class: "form-select form-select-lg" %>
           </div>
         </div>
-        <div class=" row justify-content-center">
-          <div class="col-md-8">
-            <%= form.button class: "btn btn-primary btn-sm mt-5" %>
+        <div class=" row justify-content-between">
+          <div class="col-md-1">
+            <%= link_to job_applications_path, class: "btn btn-secondary mt-5" do %>
+              <i class="fa fa-window-close"></i>
+            <% end %>
+          </div>
+          <div class="col-md-3">
+            <%= form.button class: "btn btn-success mt-5" do  %>
+              <i class="fa fa-check-square"></i>
+            <% end %>
           </div>
         </div>
       <% end %>
