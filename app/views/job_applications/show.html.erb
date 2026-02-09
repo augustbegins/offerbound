@@ -1,9 +1,14 @@
 <div class="container">
-  <h1>
-  </h1>
 
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-1 text-center">
+        <% if @prev_job_app %>
+        <%= link_to job_application_path(@prev_job_app) do %>
+          <i class="fa-solid fa-chevron-left fa-3x" style="color: blue;"></i>
+        <% end %>
+      <% end %>
+      </div>
       <div class="p-2 col-md-8">
         <div class="card mx-auto my-5">
           <div class="card-header">
@@ -17,7 +22,13 @@
             </div>
           </div>
         </div>
-
+      </div>
+      <div class="col-md-1 text-center">
+        <% if @next_job_app %>
+        <%= link_to job_application_path(@next_job_app) do %>
+          <i class="fa-solid fa-chevron-right fa-3x" style="color: blue;"></i>
+        <% end %>
+      <% end %>
       </div>
     </div>
   </div>
