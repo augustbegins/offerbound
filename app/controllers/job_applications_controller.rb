@@ -9,6 +9,10 @@ class JobApplicationsController < ApplicationController
   def show
     @job_applications = job_application_scope
     @job_applications = @job_applications.order(:created_at)
+    job_application_ids = @job_applications.pluck(:id)
+    current_index = job_application_ids.index(@job_application.id)
+    @prev_job_app = current_index && current_index > 0 ? @job_applications[current_index - 1] : nil
+    @next_job_app = current_index && current_index < job_application_ids.length - 1 ? @job_applications[current_index + 1] : nil
   end
 
   def new
