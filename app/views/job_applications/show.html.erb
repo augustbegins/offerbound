@@ -27,10 +27,10 @@
       <hr class="mt-1 mb-3 offset-md-1" style="width: 80%;">
     </div>
     <% @job_application.touchpoints.each do |touchpoint| %>
-      <%= link_to touchpoint_path(touchpoint.id), class: "text-decoration-none tex-dark d-block" do %>
+      <%= link_to touchpoint_path(touchpoint.id), class: "text-decoration-none text-dark d-block" do %>
         <div class="d-flex justify-content-end ms-5 my-1">
           <div class="col-1 d-flex align-items-center text-end justify-content-end p-1">
-            <small class=""><%= touchpoint.occurred_at.strftime("%b %d") %></small>
+            <small><%= touchpoint.occurred_at.strftime("%b %d") %></small>
           </div>
 
           <div class="col-1 d-flex align-items-center justify-content-center">
@@ -40,17 +40,17 @@
             <h6 class="p-2"> <span class="badge text-bg-info px-3 py-2"><%= touchpoint.category %> </span></h6>
           </div>
           <div class="col-8 d-flex align-items-center mb-1">
-            <div class="card">
-              <div class="card-body">
-                <div class="fs-6 justify-content-start">
-                  <%= touchpoint.short_description %>
+              <div class="card">
+                <div class="card-body">
+                  <div class="fs-6 justify-content-start">
+                    <%= touchpoint.short_description %>
+                  </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
