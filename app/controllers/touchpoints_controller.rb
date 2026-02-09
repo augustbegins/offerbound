@@ -32,7 +32,7 @@ class TouchpointsController < ApplicationController
       @touchpoint.save
       redirect_to job_application_touchpoints_url, :notice => "Touchpoint created successfully."
     else
-      redirect_to job_application_touchpoints_url, :alert => @touchpoint.errors.full_messages.to_sentence
+      redirect_back fallback_location: root_path, :alert => @touchpoint.errors.full_messages.to_sentence
     end
   end
 
@@ -47,7 +47,7 @@ class TouchpointsController < ApplicationController
       @touchpoint.save
       redirect_to touchpoint_url(@touchpoint.id), :notice => "Touchpoint updated successfully."
     else
-      redirect_to touchpoint_url(@touchpoint.id), :alert => the_touchpoint.errors.full_messages.to_sentence
+      redirect_back fallback_location: root_path, :alert => the_touchpoint.errors.full_messages.to_sentence
     end
   end
 
