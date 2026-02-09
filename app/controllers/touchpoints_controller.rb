@@ -22,6 +22,7 @@ class TouchpointsController < ApplicationController
 
   def new
     @touchpoint = @job_application.touchpoints.build
+    @form_model = [@job_application, @touchpoint]
   end
 
   def create
@@ -36,6 +37,7 @@ class TouchpointsController < ApplicationController
   end
 
   def edit
+    @form_model = @touchpoint
   end
 
   def update
@@ -43,9 +45,9 @@ class TouchpointsController < ApplicationController
 
     if @touchpoint.valid?
       @touchpoint.save
-      redirect_to job_application_touchpoints_url(@touchpoint.id), :notice => "Touchpoint updated successfully."
+      redirect_to touchpoint_url(@touchpoint.id), :notice => "Touchpoint updated successfully."
     else
-      redirect_to job_application_touchpoints_url(@touchpoint.id), :alert => the_touchpoint.errors.full_messages.to_sentence
+      redirect_to touchpoint_url(@touchpoint.id), :alert => the_touchpoint.errors.full_messages.to_sentence
     end
   end
 
