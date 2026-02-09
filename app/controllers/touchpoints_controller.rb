@@ -32,7 +32,7 @@ class TouchpointsController < ApplicationController
       @touchpoint.save
       redirect_to job_application_touchpoints_url, :notice => "Touchpoint created successfully."
     else
-      redirect_to job_application_touchpoints_url, :alert => the_touchpoint.errors.full_messages.to_sentence
+      redirect_to job_application_touchpoints_url, :alert => @touchpoint.errors.full_messages.to_sentence
     end
   end
 
