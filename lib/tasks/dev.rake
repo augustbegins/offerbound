@@ -125,7 +125,7 @@ unless Rails.env.production?
 
       puts "-- Adding job applicatons --"
 
-      20.times do
+      50.times do
         name = names.sample
         email = "#{name}@example.com"
         user = User.find_by(email: email)
