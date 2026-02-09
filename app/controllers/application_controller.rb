@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include ScopedFinder
+  
   before_action :authenticate_user!
 
   private
