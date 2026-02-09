@@ -1,10 +1,10 @@
 <div class="container">
-
-  <div class="d-flex justify-content-end ps-5">
+  <div class="d-flex justify-content-end ps-5 position-relative" style="z-index: 10;">
     <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
   </div>
 
-  <div class="pt-5 mt-5">
+
+  <div class="pt-1 mt-1">
     <div class="carousel slide" id="cardCarousel">
       <div class="carousel-inner">
         <% @job_applications.each_with_index do |job_application, i| %>
@@ -13,7 +13,7 @@
           <%= link_to job_application_path(job_application.id), class: "text-decoration-none text-dark d-block" do %>
               <div class="card mx-auto my-5" style="min-height: 24rem; max-width: 48rem;" >
                 <div class="card-header d-flex justify-content-between flex-wrap align-items-center px-5">
-                  <div> <%= job_application.company_name.titleize %> </div>
+                  <div class="fs-5"> <%= job_application.company_name %> </div>
                   <div> Application Due On: <%= job_application.due_date.strftime("%b %d") %> </div>
                 </div>
                 <div class="card-body">
@@ -24,7 +24,7 @@
                   <div class="card-text text-center mt-1 py-3">
                     <div class="container">
                       <div class="row justify-content-center">
-                        <div class="col-6">
+                        <div class="col-10">
                           <span class="mx-auto"> <%= job_application.job_description %></span>
                         </div>
                       </div>
@@ -33,7 +33,7 @@
                           <%= link_to( "Edit Application Details", edit_job_application_path(job_application.id), class: "btn btn-secondary" )%>
                         </div>
                         <div class="col-6">
-                          <%= link_to( "Add New Touchpoint", new_job_application_path(job_application.id), class: "btn btn-primary" )%>
+                          <%= link_to( "Add New Touchpoint", new_job_application_touchpoint_path(job_application.id), class: "btn btn-primary" )%>
                         </div>
 
                       </div>

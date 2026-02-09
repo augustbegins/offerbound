@@ -5,10 +5,16 @@ class JobApplicationsController < ApplicationController
     @job_applications = job_application_scope
     @job_applications = @job_applications.order(:created_at)
   end
-  
+
   def show
+    @job_applications = job_application_scope
+    @job_applications = @job_applications.order(:created_at)
+    job_application_ids = @job_applications.pluck(:id)
+    current_index = job_application_ids.index(@job_application.id)
+    @prev_job_app = current_index && current_index > 0 ? @job_applications[current_index - 1] : nil
+    @next_job_app = current_index && current_index < job_application_ids.length - 1 ? @job_applications[current_index + 1] : nil
   end
-  
+
   def new
     @job_application = current_user.job_applications.build
   end
@@ -48,7 +54,7 @@ class JobApplicationsController < ApplicationController
   def set_job_applicaiton
     @job_application = job_application_scope.find(params.fetch(:id))
   end
-  
+
   def job_application_params
     params.require(:job_application).permit(:company_name, :due_date, :job_description, :job_title, :status)
   end
