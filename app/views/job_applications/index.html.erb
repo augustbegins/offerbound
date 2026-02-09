@@ -2,58 +2,37 @@
   <div class="d-flex justify-content-end ps-5 position-relative" style="z-index: 10;">
     <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
   </div>
+  </div>
+  <div class="">
+    <div class="row">
+      <h3 class="col-md-8 offset-md-1"> Job Applications </h3>
+      <hr class="mt-1 mb-3 offset-md-1" style="width: 80%;">
+    </div>
+    <% @job_applications.each do |job_app| %>
+      <%= link_to job_application_path(job_app.id), class: "text-decoration-none text-dark d-block" do %>
+        <div class="d-flex justify-content-end ms-5 my-1">
+          <div class="col-1 d-flex align-items-center text-end justify-content-end p-1">
+            <small><%= job_app.created_at.strftime("%b %d") %></small>
+          </div>
 
-
-  <div class="pt-1 mt-1">
-    <div class="carousel slide" id="cardCarousel">
-      <div class="carousel-inner">
-        <% @job_applications.each_with_index do |job_application, i| %>
-          <div class="carousel-item <%= "active" if i == 0 %>">
-
-          <%= link_to job_application_path(job_application.id), class: "text-decoration-none text-dark d-block" do %>
-              <div class="card mx-auto my-5" style="min-height: 24rem; max-width: 48rem;" >
-                <div class="card-header d-flex justify-content-between flex-wrap align-items-center px-5">
-                  <div class="fs-5"> <%= job_application.company_name %> </div>
-                  <div> Application Due On: <%= job_application.due_date.strftime("%b %d") %> </div>
-                </div>
+          <div class="col-1 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+          <div class="col-2 d-flex align-items-center justify-content-start">
+            <h6 class="p-2"> <span class="badge text-bg-info px-3 py-2"><%= job_app.status %> </span></h6>
+          </div>
+          <div class="col-8 d-flex align-items-center mb-1">
+              <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title d-flex justify-content-center position-relative mb-4 pt-3">
-                    <span class="mx-auto text-uppercase fs-3"> <%= job_application.job_title %> </span>
-                    <span class="badge rounded-pill text-bg-info position-absolute end-0"> <%= job_application.status %> </span>
-                  </h5>
-                  <div class="card-text text-center mt-1 py-3">
-                    <div class="container">
-                      <div class="row justify-content-center">
-                        <div class="col-10">
-                          <span class="mx-auto"> <%= job_application.job_description %></span>
-                        </div>
-                      </div>
-                      <div class="row justify-content-between pt-5">
-                        <div class="col-6">
-                          <%= link_to( "Edit Application Details", edit_job_application_path(job_application.id), class: "btn btn-secondary" )%>
-                        </div>
-                        <div class="col-6">
-                          <%= link_to( "Add New Touchpoint", new_job_application_touchpoint_path(job_application.id), class: "btn btn-primary" )%>
-                        </div>
-
-                      </div>
-                    </div>
+                  <div class="fs-6 justify-content-start">
+                    <%= job_app.job_title %>
                   </div>
                 </div>
-                <div>
-                <% end %>
               </div>
+
             </div>
           </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
-  </div>
-
-  <button class="carousel-control-prev" data-bs-target="#cardCarousel" data-bs-slide="prev">
-    <i class="fa-solid fa-chevron-left fa-3x" style="color: blue;"></i>
-  </button>
-
-  <button class="carousel-control-next" data-bs-target="#cardCarousel" data-bs-slide="next">
-    <i class="fa-solid fa-chevron-right fa-3x" style="color: blue;"></i>
-  </button>
+</div>
