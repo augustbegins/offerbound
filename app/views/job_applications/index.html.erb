@@ -10,7 +10,7 @@
         <% @job_applications.each_with_index do |job_application, i| %>
           <div class="carousel-item <%= "active" if i == 0 %>">
 
-            <%= link_to job_application_path(job_application.id), class: "text-decoration-none tex-dark d-block" do %>
+          <%= link_to job_application_path(job_application.id), class: "text-decoration-none text-dark d-block" do %>
               <div class="card mx-auto my-5" style="min-height: 24rem; max-width: 48rem;" >
                 <div class="card-header d-flex justify-content-between flex-wrap align-items-center px-5">
                   <div> <%= job_application.company_name.titleize %> </div>
@@ -51,9 +51,9 @@
   </div>
 
   <button class="carousel-control-prev" data-bs-target="#cardCarousel" data-bs-slide="prev">
-    <i class="fa-solid fa-chevron-left"></i>
+    <i class="fa-solid fa-chevron-left fa-3x" style="color: blue;"></i>
   </button>
 
   <button class="carousel-control-next" data-bs-target="#cardCarousel" data-bs-slide="next">
-    <i class="fa-solid fa-chevron-right"></i>
+    <i class="fa-solid fa-chevron-right fa-3x" style="color: blue;"></i>
   </button>
