@@ -33,9 +33,12 @@
   </head>
 
   <body>
+    <%= render "shared/navbar" %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <div class="container-fluid py-2">
+
+    <div class="container-two-thirds">
       <%= yield %>
     </div>
   </body>
