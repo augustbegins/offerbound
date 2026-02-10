@@ -25,7 +25,7 @@ class JobApplicationsController < ApplicationController
       @job_application.save
       redirect_to job_applications_url, :notice => "Job application created successfully."
     else
-      render "job_applications/new"
+      redirect_to new_job_application_url, :alert => @job_application.errors.full_messages.to_sentence
     end
   end
 
@@ -39,7 +39,7 @@ class JobApplicationsController < ApplicationController
       @job_application.save
       redirect_to job_applications_url(@job_application.id), :notice => "Job application updated successfully."
     else
-      redirect_to job_applications_url(@job_application.id), :alert => the_job_application.errors.full_messages.to_sentence
+      redirect_to job_applications_url(@job_application.id), :alert => @job_application.errors.full_messages.to_sentence
     end
   end
 
