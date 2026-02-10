@@ -1,14 +1,13 @@
-
 <div class="container">
 
   <div class="container">
     <div class="row justify-content-center align-items-center">
       <div class="col-md-1 text-center">
         <% if @prev_job_app %>
-        <%= link_to job_application_touchpoints_path(@prev_job_app) do %>
-          <i class="fa-solid fa-chevron-left fa-3x" style="color: blue;"></i>
+          <%= link_to job_application_touchpoints_path(@prev_job_app) do %>
+            <i class="fa-solid fa-chevron-left fa-3x" style="color: blue;"></i>
+          <% end %>
         <% end %>
-      <% end %>
       </div>
       <div class="p-2 col-md-8">
         <div class="card mx-auto my-5">
@@ -26,16 +25,16 @@
       </div>
       <div class="col-md-1 text-center">
         <% if @next_job_app %>
-        <%= link_to job_application_touchpoints_path(@next_job_app) do %>
-          <i class="fa-solid fa-chevron-right fa-3x" style="color: blue;"></i>
+          <%= link_to job_application_touchpoints_path(@next_job_app) do %>
+            <i class="fa-solid fa-chevron-right fa-3x" style="color: blue;"></i>
+          <% end %>
         <% end %>
-      <% end %>
       </div>
     </div>
   </div>
   <div class="">
     <div class="row">
-      <h3 class="col-md-8 offset-md-1"> Timeline </h3>
+      <div class="col-md-8 offset-md-1"> Timeline </div>
       <hr class="mt-1 mb-3 offset-md-1" style="width: 80%;">
     </div>
     <% @job_application.touchpoints.each do |touchpoint| %>
@@ -52,17 +51,20 @@
             <h6 class="p-2"> <span class="badge text-bg-info px-3 py-2"><%= touchpoint.category %> </span></h6>
           </div>
           <div class="col-8 d-flex align-items-center mb-1">
-              <div class="card">
-                <div class="card-body">
-                  <div class="fs-6 justify-content-start">
-                    <%= touchpoint.short_description %>
-                  </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="fs-6 justify-content-start">
+                  <%= touchpoint.short_description %>
                 </div>
               </div>
-
             </div>
+
           </div>
-        <% end %>
+        </div>
       <% end %>
+    <% end %>
+    <div class="d-flex justify-content-center p-5 position-relative" style="z-index: 10;">
+      <%= link_to 'Add Touch Point', new_job_application_touchpoint_path(@job_application.id), class: "btn btn-primary btn-sm" %>
     </div>
   </div>
+</div>
