@@ -4,8 +4,8 @@
     <div class="row justify-content-center align-items-center">
       <div class="col-md-1 text-center">
         <% if @prev_job_app %>
-          <%= link_to job_application_touchpoints_path(@prev_job_app) do %>
-            <i class="fa-solid fa-chevron-left fa-3x" style="color: blue;"></i>
+          <%= link_to job_application_touchpoints_path(@prev_job_app), class: "btn btn-outline-primary btn-sm" do %>
+            <i class="fa-solid fa-chevron-left fa-3x"></i>
           <% end %>
         <% end %>
       </div>
@@ -25,8 +25,8 @@
       </div>
       <div class="col-md-1 text-center">
         <% if @next_job_app %>
-          <%= link_to job_application_touchpoints_path(@next_job_app) do %>
-            <i class="fa-solid fa-chevron-right fa-3x" style="color: blue;"></i>
+          <%= link_to job_application_touchpoints_path(@next_job_app), class: "btn btn-outline-primary btn-sm" do %>
+            <i class="fa-solid fa-chevron-right fa-3x"></i>
           <% end %>
         <% end %>
       </div>
