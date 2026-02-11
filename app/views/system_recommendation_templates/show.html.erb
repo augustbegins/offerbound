@@ -1,0 +1,111 @@
+<h1>
+  System recommendation #<%= @the_system_recommendation.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/system_recommendations">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_system_recommendation/<%= @the_system_recommendation.id %>">
+      Delete system recommendation
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Job application
+    </dt>
+    <dd>
+      <%= @the_system_recommendation.job_application_id %>
+    </dd>
+
+    <dt>
+      Recommendation type
+    </dt>
+    <dd>
+      <%= @the_system_recommendation.recommendation_type %>
+    </dd>
+
+    <dt>
+      Message
+    </dt>
+    <dd>
+      <%= @the_system_recommendation.message %>
+    </dd>
+
+    <dt>
+      Status
+    </dt>
+    <dd>
+      <%= @the_system_recommendation.status %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_system_recommendation.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_system_recommendation.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit system recommendation
+    </h2>
+  </header>
+
+  <form action="/modify_system_recommendation/<%= @the_system_recommendation.id %>"  method="post" >
+    <div>
+      <label for="job_application_id_box">
+        Job application
+      </label>
+
+      <input type="text" id="job_application_id_box" name="query_job_application_id" value="<%= @the_system_recommendation.job_application_id %>">
+    </div>
+
+    <div>
+      <label for="recommendation_type_box">
+        Recommendation type
+      </label>
+
+      <input type="text" id="recommendation_type_box" name="query_recommendation_type" value="<%= @the_system_recommendation.recommendation_type %>">
+    </div>
+
+    <div>
+      <label for="message_box">
+        Message
+      </label>
+
+      <input type="text" id="message_box" name="query_message" value="<%= @the_system_recommendation.message %>">
+    </div>
+
+    <div>
+      <label for="status_box">
+        Status
+      </label>
+
+      <input type="text" id="status_box" name="query_status" value="<%= @the_system_recommendation.status %>">
+    </div>
+
+    <button type="submit">
+      Update system recommendation
+    </button>
+  </form>
+</article>
+
+<hr>
