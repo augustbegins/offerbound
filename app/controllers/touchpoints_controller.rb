@@ -31,7 +31,7 @@ class TouchpointsController < ApplicationController
     if @touchpoint.valid?
       @touchpoint.save
       if @touchpoint.category == "interview"
-        @job_application.status.update(status: :interviewing)
+        @job_application.update(status: :interviewing)
       end
       redirect_to job_application_touchpoints_url, :notice => "Touchpoint created successfully."
     else

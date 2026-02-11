@@ -13,6 +13,7 @@ class JobApplicationsController < ApplicationController
     current_index = job_application_ids.index(@job_application.id)
     @prev_job_app = current_index && current_index > 0 ? @job_applications[current_index - 1] : nil
     @next_job_app = current_index && current_index < job_application_ids.length - 1 ? @job_applications[current_index + 1] : nil
+    @recommendations = @job_application.system_recommendations.pending
   end
 
   def new
@@ -47,18 +48,6 @@ class JobApplicationsController < ApplicationController
     @job_application.destroy
 
     redirect_to job_applications_url(@job_application.id), :notice => "Job application deleted successfully."
-  end
-
-  def generate_interview_reflection_recommendation
-    return unless interviewing?
-    todays_interviews = touchpoints.interview.where(occurred_at: Date.today.all_day)
-    return if todays_interviews.empty?
-    
-    system_recommendations.create!(
-      recommendation_type: :reflection,
-      message: "Record a touchpoint after your interview today, reflecting on what you feel went well and where there's room for improvement.",
-      status: :pending
-    )
   end
 
   private

@@ -2,6 +2,13 @@
   <div class="d-flex justify-content-end ps-5 position-relative" style="z-index: 10;">
     <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
   </div>
+
+  <% @recommendations.each do |rec| %>
+    <div class="alert alert-info">
+      <%= rec.message %>
+    </div>
+  <% end %>
+
   <div class="row align-items-center justify-content-center">
     <div class="col-md-1 text-center">
       <% if @prev_job_app %>
