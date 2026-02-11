@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_08_100826) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_11_043445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "pg_catalog.plpgsql"
@@ -167,6 +167,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_08_100826) do
     t.index ["expires_at"], name: "index_solid_queue_semaphores_on_expires_at"
     t.index ["key", "value"], name: "index_solid_queue_semaphores_on_key_and_value"
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
+  end
+
+  create_table "system_recommendations", force: :cascade do |t|
+    t.integer "job_application_id"
+    t.string "recommendation_type"
+    t.text "message"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "touchpoints", force: :cascade do |t|
