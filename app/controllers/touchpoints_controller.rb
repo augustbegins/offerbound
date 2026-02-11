@@ -30,6 +30,9 @@ class TouchpointsController < ApplicationController
 
     if @touchpoint.valid?
       @touchpoint.save
+      if @touchpoint.category == "interview"
+        @job_application.status.update(status: :interviewing)
+      end
       redirect_to job_application_touchpoints_url, :notice => "Touchpoint created successfully."
     else
       redirect_back fallback_location: root_path, :alert => @touchpoint.errors.full_messages.to_sentence

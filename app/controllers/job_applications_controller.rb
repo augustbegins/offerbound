@@ -49,6 +49,18 @@ class JobApplicationsController < ApplicationController
     redirect_to job_applications_url(@job_application.id), :notice => "Job application deleted successfully."
   end
 
+  def generate_interview_reflection_recommendation
+    return unless interviewing?
+    todays_interviews = touchpoints.interview.where(occurred_at: Date.today.all_day)
+    return if todays_interviews.empty?
+    
+    system_recommendations.create!(
+      recommendation_type: :reflection,
+      message: "Record a touchpoint after your interview today, reflecting on what you feel went well and where there's room for improvement.",
+      status: :pending
+    )
+  end
+
   private
 
   def set_job_applicaiton
