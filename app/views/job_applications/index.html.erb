@@ -1,48 +1,64 @@
 <div class="container">
 
-  <div class="d-flex justify-content-end ps-5 position-relative" style="z-index: 10;">
-    <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
-  </div>
-</div>
-<div class="">
-  <div class="row">
-    <h3 class="col-md-8 offset-md-1"> Job Applications </h3>
-    <hr class="mt-1 mb-3 offset-md-1" style="width: 80%;">
-  </div>
-  <% @job_applications.each do |job_app| %>
-    <div class="d-flex justify-content-start ms-5 my-1">
-      <div class="col-1 d-flex align-items-center text-end justify-content-end p-1">
-        <small><%= job_app.created_at.strftime("%b %d") %></small>
+
+    <div class="d-flex justify-content-between align-items-center">
+    <h3 class="col-6 col-md-8 offset-md-1"> Job Applications </h3>
+    <div class="col-6 ps-2 position-relative" style="z-index: 10;">
+      <%= link_to new_job_application_path, class: "btn btn-primary btn-sm" do %>
+        <i class="fa fa-plus-circle"></i>
+      <% end %>
+    </div>
+    </div>
+
+  <div class="col-12 col-md-8 offset-md-2">
+    <% @job_applications.each do |job_app| %>
+    <%= link_to job_application_path(job_app.id), class: "text-decoration-none text-dark d-block" do %>
+      <div class="card shadow-sm mb-5 border-0">
+        <div class="card-body">
+
+          <!-- Top Row -->
+          <div class="d-flex justify-content-between align-items-start">
+
+            <div>
+              <h5 class="mb-1 fw-semibold">
+                <%= job_app.job_title %>
+              </h5>
+              <h6 class="fst-italic">
+                <%= job_app.company_name %>
+              </h6>
+
+              <small class="text-muted">
+                application due: <%= job_app.due_date.strftime("%b %d, %Y") %>
+              </small>
+            </div>
+
+          </div>
+
+          <!-- Status Badge -->
+          <div class="mt-2">
+            <span class="badge text-bg-info px-3 py-2">
+              <%= job_app.status %>
+            </span>
+          </div>
+
+          <!-- Actions -->
+          <div class="d-flex justify-content-start gap-3 mt-3">
+            <%= link_to edit_job_application_path(job_app.id), class: "text-dark" do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+
+            <%= link_to job_application_path(job_app.id),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: "text-muted" do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          </div>
+
+        </div>
       </div>
 
-      <div class="col-1 d-flex align-items-center justify-content-center">
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-      <div class="col-2 d-flex align-items-center justify-content-start">
-        <h6 class="p-2"> <span class="badge text-bg-info px-3 py-2"><%= job_app.status %> </span></h6>
-      </div>
-      <div class="col-4 d-flex align-items-center mb-1">
-        <%= link_to job_application_path(job_app.id), class: "text-decoration-none text-dark d-block" do %>
-          <div class="card">
-            <div class="card-body">
-              <div class="fs-6 justify-content-start">
-                <%= job_app.job_title %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-1 d-flex align-items-center justify-content-start">
-        <%= link_to edit_job_application_path(job_app.id), class: "d-flex align-items-center justify-content-start text-dark" do %>
-          <i class="fa fa-pencil"></i>
-        <% end %>
-      </div>
-      <div class="col-1 d-flex align-items-center justify-content-start">
-        <%= link_to job_application_path(job_app.id), method: :delete, class: "d-flex align-items-center justify-content-start text-dark" do %>
-          <i class="fa fa-trash" style="color: gray;"></i>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+    <% end %>
+  </div>
 </div>
