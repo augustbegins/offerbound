@@ -1,82 +1,93 @@
-<div class="container">
+<div class="container my-4">
 
-  <div class="container">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-md-1 text-center">
-        <% if @prev_job_app %>
-          <%= link_to job_application_touchpoints_path(@prev_job_app), class: "btn btn-outline-primary btn-sm" do %>
-            <i class="fa-solid fa-chevron-left fa-3x"></i>
-          <% end %>
+  <div class="row justify-content-between align-items-center">
+
+    <div class="col-2 col-md-1">
+      <% if @prev_job_app %>
+        <%= link_to job_application_touchpoints_path(@prev_job_app), class: "btn btn-outline-primary btn-sm" do %>
+          <i class="fa-solid fa-chevron-left fa-sm"></i>
         <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-8 col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h4 class="fw-semibold mb-2">
+            <%= @job_application.job_title.upcase_first %>
+          </h4>
+          <div class="text-muted mb-3">
+            at <%= @job_application.company_name%>
+          </div>
+          <p class="mb-0">
+            <%= @job_application.job_description %>
+          </p>
+        </div>
       </div>
-      <div class="p-2 col-md-8">
-        <div class="card mx-auto my-5">
-          <div class="card-header">
-            <h2 class="row justify-content-center">
-              <%= @job_application.job_title.upcase_first %> at <%= @job_application.company_name%>
-            </h2>
-            <div class="card-body">
-              <span>
-                <%= @job_application.job_description %>
+    </div>
+    <div class="col-2 col-md-1">
+      <% if @next_job_app %>
+        <%= link_to job_application_touchpoints_path(@next_job_app), class: "btn btn-outline-primary btn-sm" do %>
+          <i class="fa-solid fa-chevron-right fa-sm"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-12 col-md-8 offset-md-2">
+      <div class="d-flex align-items-center justify-content-evenly">
+        <h4 class="fw-semibold">
+          Timeline
+        </h4>
+        <div class="text-center">
+          <%= link_to new_job_application_touchpoint_path(@job_application.id), class: "btn btn-outline-success btn-small" do %>
+            <i class="fa fa-plus-circle"></i>
+          <% end %>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+  <% @job_application.touchpoints.order( :occurred_at ).each do |touchpoint| %>
+    <div class="row justify-content-center mb-3">
+      <div class="col-12 col-md-8">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <small class="text-muted">
+                <%= touchpoint.occurred_at.strftime("%b %d") %>
+              </small>
+              <span class="badge bg-light text-dark border">
+                <%= touchpoint.category %>
               </span>
+            </div>
+            <div class="mt-3">
+              <%= link_to touchpoint_path(touchpoint.id), class: "text-decoration-none text-dark d-block" do %>
+                <div class="fw-medium">
+                  <%= touchpoint.short_description %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="d-flex justify-content-end gap-3 mt-3">
+              <%= link_to edit_touchpoint_path(touchpoint.id), class: "text-dark" do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+
+              <%= link_to job_application_path(touchpoint.id), method: :delete, data: { confirm: "Are you sure?" }, class: "text-muted" do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-1 text-center">
-        <% if @next_job_app %>
-          <%= link_to job_application_touchpoints_path(@next_job_app), class: "btn btn-outline-primary btn-sm" do %>
-            <i class="fa-solid fa-chevron-right fa-3x"></i>
-          <% end %>
-        <% end %>
-      </div>
     </div>
-  </div>
-  <div class="">
-    <div class="row">
-      <div class="col-md-8 offset-md-1 fs-4"> Timeline </div>
-      <hr class="mt-1 mb-3 offset-md-1" style="width: 80%;">
-    </div>
-    <% @job_application.touchpoints.each do |touchpoint| %>
-      <div class="d-flex justify-content-start ms-5 my-1">
-        <div class="col-1 d-flex align-items-center text-end justify-content-end p-1">
-          <small><%= touchpoint.occurred_at.strftime("%b %d") %></small>
-        </div>
 
-        <div class="col-1 d-flex align-items-center justify-content-center">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-        <div class="col-2 d-flex align-items-center justify-content-start">
-          <h6 class="p-2"> <span class="badge text-bg-info px-3 py-2"><%= touchpoint.category %> </span></h6>
-        </div>
-        <div class="col-4  d-flex align-items-center mb-1">
-          <%= link_to touchpoint_path(touchpoint.id), class: "text-decoration-none text-dark d-block" do %>
-            <div class="card">
-              <div class="card-body">
-                <div class="fs-6 justify-content-start">
-                  <%= touchpoint.short_description %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="col-1 d-flex align-items-center justify-content-end">
-          <%= link_to edit_touchpoint_path(touchpoint.id), class: "d-flex align-items-center justify-content-start text-dark" do %>
-            <i class="fa fa-pencil"></i>
-          <% end %>
-        </div>
-        <div class="col-1 d-flex align-items-center justify-content-end">
-          <%= link_to job_application_path(touchpoint.id), method: :delete, class: "d-flex align-items-center justify-content-start text-dark" do %>
-            <i class="fa fa-trash" style="color: gray;"></i>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-    <div class="d-flex justify-content-center p-5 position-relative" style="z-index: 10;">
-      <%= link_to new_job_application_touchpoint_path(@job_application.id), class: "btn btn-outline-success btn-lg" do %>
-          Add A Touchpoint
-        <i class="fa fa-plus-circle"></i>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
+
+</div>
 </div>
