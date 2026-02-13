@@ -1,7 +1,4 @@
-<div class="container">
-  <div class="d-flex justify-content-end ps-5 position-relative" style="z-index: 10;">
-    <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
-  </div>
+<div class="container py-3">
 
   <% @recommendations.each do |rec| %>
     <div class="alert alert-info">
@@ -17,46 +14,45 @@
         <% end %>
       <% end %>
     </div>
+    <div class="d-flex justify-content-center mt-3">
+      <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
+    </div>
     <div class="col-md-10">
       <%= link_to job_application_touchpoints_path(@job_application.id), class: "text-decoration-none text-dark d-block" do %>
-        <div class="card mx-auto my-5" style="min-height: 24rem; max-width: 48rem;" >
-          <div class="card-header d-flex justify-content-between flex-wrap align-items-center px-5">
-            <div class="fs-5"> <%= @job_application.company_name %> </div>
-            <div> Application Due On: <%= @job_application.due_date.strftime("%b %d") %> </div>
+        <div class="card mx-auto my-3" style="min-height: 24rem; max-width: 48rem;" >
+          <div class="card-header d-flex justify-content-between flex-md-rown align-items-md-center gap-2">
+            <div class="fw-semibold fs-5"> <%= @job_application.company_name %> </div>
+            <span class="badge rounded-pill text-bg-info"> <%= @job_application.status %> </span>
+            <div class="small text-muted"> Due: <%= @job_application.due_date.strftime("%b %d") %> </div>
           </div>
           <div class="card-body">
-            <h5 class="card-title d-flex justify-content-center position-relative mb-4 pt-3">
-              <span class="mx-auto text-uppercase fs-3"> <%= @job_application.job_title %> </span>
-              <span class="badge rounded-pill text-bg-info position-absolute end-0"> <%= @job_application.status %> </span>
-            </h5>
-            <div class="card-text text-center mt-1 py-3">
-              <div class="container">
-                <div class="row justify-content-center">
-                  <div class="col-10">
-                    <span class="mx-auto"> <%= @job_application.job_description %></span>
-                  </div>
-                </div>
-                <div class="row justify-content-between pt-5">
-                  <div class="col-6">
-                    <%= link_to( "Edit Application Details", edit_job_application_path(@job_application.id), class: "btn btn-secondary" )%>
-                  </div>
-                  <div class="col-6">
-                    <%= link_to( "Add New Touchpoint", new_job_application_touchpoint_path(@job_application.id), class: "btn btn-primary" )%>
-                  </div>
+            <div class="position-relative mb-4 text-center">
+              <h5 class="text-uppercase fw-bold fs-4 m-0"> <%= @job_application.job_title %> </h5>
 
-                </div>
+            </div>
+
+            <p class="text-center px-md-5"> <%= @job_application.job_description %></p>
+
+            <div class="row mt-4 g-2">
+              <div class="col-12 col-md-6">
+                <%= link_to( "Edit Application Details", edit_job_application_path(@job_application.id), class: "btn btn-secondary w-100" )%>
               </div>
+              <div class="col-12 col-md-6">
+                <%= link_to( "Add New Touchpoint", new_job_application_touchpoint_path(@job_application.id), class: "btn btn-primary w-100" )%>
+              </div>
+
             </div>
           </div>
+
         </div>
       <% end %>
-    </div>
-    <div class="col-md-1 text-center">
-      <% if @next_job_app %>
-        <%= link_to job_application_path(@next_job_app), class: "btn btn-outline-primary" do %>
-          <i class="fa-solid fa-chevron-right fa-3x"></i>
+
+      <div class="col-md-1 text-center">
+        <% if @next_job_app %>
+          <%= link_to job_application_path(@next_job_app), class: "btn btn-outline-primary" do %>
+            <i class="fa-solid fa-chevron-right fa-3x"></i>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
-</div>
