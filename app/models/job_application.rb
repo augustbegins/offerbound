@@ -19,16 +19,4 @@ class JobApplication < ApplicationRecord
   has_many :system_recommendations, class_name: "SystemRecommendation", foreign_key: "job_application_id", dependent: :destroy
   enum :status, { planning: 0, applied: 1, interviewing: 2, offered: 3, rejected: 4 }
   validates :company_name, :job_title, :status, :due_date, :job_description, presence: true
-
-  def generate_interview_reflection_recommendations
-    return unless interviewing?
-    todays_interviews = touchpoints.interview.where(occurred_at: Date.today.all_day)
-    return if todays_interviews.empty?
-
-    system_recommendations.create!(
-      recommendation_type: :post_interview_reflection,
-      message: "Record a touchpoint after your interview today, reflecting on what you feel went well and where there's room for improvement.",
-      status: :pending,
-    )
-  end
 end
