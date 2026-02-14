@@ -1,15 +1,15 @@
 module Reccomendations
   class InterviewReflectionGenerator
     def self.call(set_job_application)
-      new(job_applicaiton).call
+      new(job_application).call
     end
 
     def initialize
-      @job_applicaiton = job_application
+      @job_application = job_application
     end
     
     def call
-      return unless job_applicaiton.interviewing?
+      return unless job_application.interviewing?
       return unless interviews_today?
 
       create_recommendation

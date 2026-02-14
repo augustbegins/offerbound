@@ -123,7 +123,7 @@ unless Rails.env.production?
       end
       puts "-- Finished adding users --"
 
-      puts "-- Adding job applicatons --"
+      puts "-- Adding job applications --"
 
       50.times do
         name = names.sample

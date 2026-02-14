@@ -1,5 +1,5 @@
 class JobApplicationsController < ApplicationController
-  before_action :set_job_applicaiton, only: [:show, :update, :destroy, :edit]
+  before_action :set_job_application, only: [:show, :update, :destroy, :edit]
 
   def index
     @job_applications = job_application_scope
@@ -52,7 +52,7 @@ class JobApplicationsController < ApplicationController
 
   private
 
-  def set_job_applicaiton
+  def set_job_application
     @job_application = job_application_scope.find(params.fetch(:id))
   end
 

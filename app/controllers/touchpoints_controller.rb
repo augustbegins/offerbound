@@ -1,5 +1,5 @@
 class TouchpointsController < ApplicationController
-  before_action :set_job_applicaiton, only: [:index, :new, :create]
+  before_action :set_job_application, only: [:index, :new, :create]
   before_action :set_touchpoint, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -62,7 +62,7 @@ class TouchpointsController < ApplicationController
 
   private
 
-  def set_job_applicaiton
+  def set_job_application
     @job_application = job_application_scope.find(params.fetch(:job_application_id))
   end
 
