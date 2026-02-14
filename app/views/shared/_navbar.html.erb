@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <%= link_to "OfferBound", root_path, class: "navbar-brand fs-3 ms-5" %>
 
@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto ms-3 mb-2 mb-lg-0 align-items-center">
         <% if user_signed_in? %>
-          <li class="nav-item m-1">
+          <li class="nav-item">
             <%= link_to job_applications_path, class: "nav-link" do %>
               <i class="fa fa-briefcase"></i>
               Job Applications
@@ -44,11 +44,4 @@
       </ul>
     </div>
   </div>
-</nav>
-
-<!--<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Library</li>
-  </ol>
-</nav>-->
+</nav>  
