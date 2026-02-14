@@ -57,7 +57,7 @@ class TouchpointsController < ApplicationController
   def destroy
     @touchpoint.destroy
 
-    redirect_to job_application_touchpoints_url, :notice => "Touchpoint deleted successfully."
+    redirect_to job_application_touchpoints_url(@job_application.id), :notice => "Touchpoint deleted successfully."
   end
 
   private

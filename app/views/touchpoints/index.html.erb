@@ -78,7 +78,7 @@
                 <i class="fa fa-pencil"></i>
               <% end %>
 
-              <%= link_to job_application_path(touchpoint.id), method: :delete, data: { confirm: "Are you sure?" }, class: "text-muted" do %>
+              <%= link_to touchpoint_path(touchpoint.id), method: :delete, data: { confirm: "Are you sure?" }, class: "text-muted" do %>
                 <i class="fa fa-trash"></i>
               <% end %>
             </div>
