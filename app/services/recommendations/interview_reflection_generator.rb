@@ -1,6 +1,6 @@
 module Reccomendations
   class InterviewReflectionGenerator
-    def self.call(set_job_application)
+    def self.call(job_application)
       new(job_application).call
     end
 
