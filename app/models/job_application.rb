@@ -19,4 +19,14 @@ class JobApplication < ApplicationRecord
   has_many :system_recommendations, class_name: "SystemRecommendation", foreign_key: "job_application_id", dependent: :destroy
   enum :status, { planning: 0, applied: 1, interviewing: 2, offered: 3, rejected: 4 }
   validates :company_name, :job_title, :status, :due_date, :job_description, presence: true
+
+  after_create_commit :generate_initial_recommendations
+
+  private
+
+  def generate_initial_recommendations
+    Recommendations::JobApplicationOnCreateGenerator.call(self)
+
+    JobApplicationFollowUpJob.set(wait: 7.days).perform_later(id)
+  end
 end

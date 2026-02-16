@@ -50,8 +50,6 @@ class JobApplicationsController < ApplicationController
     redirect_to job_applications_url(@job_application.id), :notice => "Job application deleted successfully."
   end
 
-  after_create_commit :generate_initial_recommendations
-
   private
 
   def set_job_application
@@ -60,11 +58,5 @@ class JobApplicationsController < ApplicationController
 
   def job_application_params
     params.require(:job_application).permit(:company_name, :due_date, :job_description, :job_title, :status)
-  end
-
-  def generate_initial_recommendations
-    Recommendations::JobApplicationOnCreateGenerator.call(self)
-
-    JobApplicationFollowUpJob.set(wait: 7.days).perform_later(id)
   end
 end
