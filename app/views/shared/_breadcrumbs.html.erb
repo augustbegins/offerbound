@@ -2,38 +2,48 @@
   <div class="container mb-1">
     <nav aria-label="breadcrumb" class="">
       <ol class="breadcrumb container">
-        <li class="breadcrumb-item">
-          <%= link_to "All Applications", job_applications_path  %>
-        </li>
-
-        <% if controller_name == "job_applications" && action_name == "new" %>
+        <% if controller_name == "job_applications" %>
           <li class="breadcrumb-item">
-            New Job Application
+            <%= link_to "Job Applications", job_applications_path  %>
           </li>
-        <% elsif @job_application %>
-          <li class="breadcrumb-item">
-            <%= link_to @job_application.company_name + " App", job_application_path(@job_application) %>
-          </li>
-        <% end %>
+          <% if controller_name == "job_applications" && action_name == "new" %>
+            <li class="breadcrumb-item">
+              New Job Application
+            </li>
+          <% elsif @job_application %>
+            <li class="breadcrumb-item">
+              <%= link_to @job_application.company_name + " App", job_application_path(@job_application) %>
+            </li>
+          <% end %>
 
-        <% if controller_name == "touchpoints" && action_name == "index" %>
-          <li class="breadcrumb-item active" aria-current="page">
-            Touchpoints
-          </li>
-        <% end %>
+          <% if controller_name == "touchpoints" && action_name == "index" %>
+            <li class="breadcrumb-item active" aria-current="page">
+              Touchpoints
+            </li>
+          <% end %>
 
-        <% if controller_name == "touchpoints" && action_name == "new" %>
-          <li class="breadcrumb-item">
-            New Touchpoint
-          </li>
-        <% elsif @touchpoint %>
-          <li class="breadcrumb-item">
-            <%= link_to "Touchpoints", job_application_touchpoints_path(@job_application) %>
-          </li>
+          <% if controller_name == "touchpoints" && action_name == "new" %>
+            <li class="breadcrumb-item">
+              New Touchpoint
+            </li>
+          <% elsif @touchpoint %>
+            <li class="breadcrumb-item">
+              <%= link_to "Touchpoints", job_application_touchpoints_path(@job_application) %>
+            </li>
 
-          <li class="breadcrumb-item active" aria-current="page">
-            <%= @touchpoint.category.titleize %> on <%= @touchpoint.occurred_at.strftime("%m/%d/%y") %>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= @touchpoint.category.titleize %> on <%= @touchpoint.occurred_at.strftime("%m/%d/%y") %>
+            </li>
+          <% end %>
+        <% elsif controller_name == "system_recommendations" %>
+          <li class="breadcrumb-item">
+            <%= link_to "Next Steps", system_recommendations_path %>
           </li>
+          <% if @job_application %>
+            <li class="breadcrumb-item">
+              <%= link_to @job_application.job_title + " at " + @job_application.company_name + " App", job_application_path(@job_application) %>
+            </li>
+          <% end %>
         <% end %>
       </ol>
     </nav>
