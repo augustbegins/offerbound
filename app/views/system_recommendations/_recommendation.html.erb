@@ -1,0 +1,35 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <% if rec.pending? %>
+      <div class="d-flex justify-content-between mb-1">
+        <%= link_to system_recommendations_path(rec, 
+              status: :acted_on), 
+            method: :patch, 
+            class: "btn btn-sm btn-success d-flex align-items-center justify-content-center p-1", 
+            style: "width: 20px; height: 20px;" do %>
+          <i class="fa fa-check-square fa-2xs"></i>
+        <% end %>
+
+        <%= button_to system_recommendations_path(rec, 
+              status: :dismissed), 
+            method: :patch, 
+            class: "btn btn-sm btn-success d-flex align-items-center justify-content-center p-1", 
+            style: "width: 20px; height: 20px;" do %>
+          <i class="fa fa-times-circle fa-2xs"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <div>
+      <small class="text-muted">
+        <%= rec.job_application.job_title %> @ <%= rec.job_application.company_name %>
+        <%= link_to rec.job_application.company_name, job_application_path(rec.job_application)%>
+      </small>
+    </div>
+      <strong>
+        <%= rec.recommendation_type %>
+      </strong>
+      <p class="mb-1">
+        <%= rec.message %>
+      </p>
+  </div>
+</div>
