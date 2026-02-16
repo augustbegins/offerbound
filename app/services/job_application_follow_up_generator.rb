@@ -1,4 +1,4 @@
-module Reccomendations
+module Recommendations
   class JobApplicationFollowUpGenerator
     def self.call(job_application)
       new(job_application).call

@@ -1,4 +1,4 @@
-module Reccomendations
+module Recommendations
   class InterviewReflectionGenerator
     def self.call(job_application)
       new(job_application).call

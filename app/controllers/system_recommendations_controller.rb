@@ -6,7 +6,7 @@ class SystemRecommendationsController < ApplicationController
   def update
     @recommendation = current_user_recommendations.find(params.fetch(:id))
     if @recommendation.update(status: params[:status])
-      redirect_back fallback_location: system_recommendation_path, :notice => "Reccomendation updated."
+      redirect_back fallback_location: system_recommendation_path, :notice => "Recommendation updated."
     else
       redirect_back fallback_location: root_path, :alert => @recommendation.errors.full_messages.to_sentence
     end
