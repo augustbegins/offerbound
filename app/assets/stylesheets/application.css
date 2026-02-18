@@ -13,6 +13,7 @@
 
 body {
   font-family: 'DM Serif Text', serif !important;
+  padding-top: 80px;
 }
 
 .breadcrumb {
@@ -44,4 +45,13 @@ body {
 
 .breadcrumb-item.active {
   font-weight: 600;
+}
+
+/* Frosted gladd navbar */ 
+.custom-navbar {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  z-index: 1030; 
 }

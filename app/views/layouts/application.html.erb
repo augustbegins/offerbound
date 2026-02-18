@@ -35,9 +35,11 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <div class="breadcrumb-wrapper">
-      <%= render "shared/breadcrumbs" %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="breadcrumb-wrapper">
+        <%= render "shared/breadcrumbs" %>
+      </div>
+    <% end %>
 
     <div class="container">
       <div class="row mb-4">
