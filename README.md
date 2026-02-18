@@ -7,9 +7,6 @@ Most tools track applications, few help track the various outreach, research, an
 ## Core Capabilities 
 - Job Application tracking with status management using enums
 - Touchpoint logging (messaging, interviews, reflections)
-- Structu## Core Capabilities 
-- Job Application tracking with status management using enums
-- Touchpoint logging (messaging, interviews, reflections)
 - Rule-based, time-based, and status-based recommendations
 - Scheduled evaluation via background jobs
 
@@ -58,6 +55,4 @@ The architecture is intentionally designed to support these additions without m
 - Interview reponse analysis
 
 ## Live Demo
-* Coming soon (currently in active development and deployed on Render) *
-
-
+*Coming soon (currently in active development and deployed on Render)*
