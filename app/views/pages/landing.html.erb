@@ -1,0 +1,9 @@
+<h1>Hello, world</h1>
+
+<% if user_signed_in? %>
+  <p>You are signed in as <%= current_user.email_address %>
+  <%= button_to "Sign Out", user_session_path, method: :delete, data: { turbo_method: :delete } %>
+<% else %>
+  <p>You are not signed in</p>
+  <%= link_to "Sign In", new_user_session_path %>
+<% end %>

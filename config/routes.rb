@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :system_recommendations, only: [:index, :update]
   #------------------------------
   devise_for :users
-  root to: "job_applications#index"
+  root to: "pages#landing"
 end
