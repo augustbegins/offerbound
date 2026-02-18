@@ -1,39 +1,37 @@
 
-
-
-<div class="container-fluid p-0">
-
-  <!-- Hero Image -->
-  <div>
-    <%= image_tag "home-page-pic.png",
-        class: "img-fluid w-100",
-        alt: "App preview image" %>
-  </div>
-
-  <!-- Content Section -->
-  <div class="container py-5">
-
-    <!-- Intro -->
-    <div class="text-center mb-4">
-      <h1 class="fw-bold">Welcome to OfferBound</h1>
-      <p class="lead mt-3">
-        Track your job applications, manage touchpoints,
-        and receive intelligent recommendations to stay on top of your career journey.
-      </p>
+<div class="container-fluid">
+  <div class="col-12 col-md-8 justify-content-center mx-auto">
+    <!-- Hero Image -->
+    <div>
+      <%= image_tag "home-page-pic.png",
+          class: "img-fluid w-100",
+          alt: "App preview image" %>
     </div>
 
-    <!-- Call To Action Buttons -->
-    <% unless user_signed_in? %>
-    <div class="d-grid gap-3 col-12 col-md-6 mx-auto mt-4">
-      <%= link_to "Create an Account",
+    <!-- Content Section -->
+    <div class="container py-5">
+
+      <!-- Intro -->
+      <div class="text-center mb-4">
+        <h1 class="fw-bold">Welcome to OfferBound</h1>
+        <p class="lead mt-3 col-12 col-md-4 justify-content-center mx-auto pb-2">
+          Track your job applications, manage touchpoints,
+          and receive intelligent recommendations to stay on top of your career journey.
+        </p>
+      </div>
+
+      <!-- Call To Action Buttons -->
+      <% unless user_signed_in? %>
+        <div class="d-grid gap-3 col-12 col-md-6 mx-auto mt-4">
+          <%= link_to "Create an Account",
           new_user_registration_path,
           class: "btn btn-primary btn-lg" %>
 
-      <%= link_to "Log In",
+          <%= link_to "Log In",
           new_user_session_path,
           class: "btn btn-outline-secondary btn-lg" %>
+        </div>
+      <% end %>
     </div>
-    <% end %>
-
   </div>
 </div>
