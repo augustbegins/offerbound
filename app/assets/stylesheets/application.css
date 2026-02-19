@@ -11,18 +11,54 @@
 
 @import "custom-image.css";
 
+:root {
+  --bs-body-bg: #e8f9ff;        /* page background */
+  --card-bg: #ffffff;        /* card background */
+  --bs-body-color: #050505;     /* main text */
+  --bs-secondary: #7AB2B2;      /* muted / secondary text */
+  --bs-primary: #09637E;        /* buttons / primary links */
+  --bs-primary-hover: #088395;  /* hover buttons */
+  --bs-border-color: rgba(5,5,5,0.08); /* subtle borders */
+}
+
+
+
 body {
   font-family: 'DM Serif Text', serif !important;
   padding-top: 80px;
+  background-color: var(--bs-body-bg);
+  color: #050505;
+  min-height: 100vh;
+}
+
+p, small, .text-muted {
+  color: var(--bs-secondary) !important;
+}
+
+.container {
+background-color: transparent !important;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(5, 5, 5, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(5, 5, 5, 0.08);
 }
 
 .breadcrumb {
   --bs-breadcrumb-divider: " > ";
 }
+
 .breadcrumb-wrapper {
-  background: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
   padding: 0.75rem 0;
+
 }
 
 .breadcrumb {
@@ -39,19 +75,68 @@ body {
 
 .breadcrumb-item a {
   text-decoration: none;
-  color: #495057;
+  color: #09637E;
   font-weight: 500;
 }
 
 .breadcrumb-item.active {
   font-weight: 600;
+  color: #1f1d1d;
 }
 
-/* Frosted gladd navbar */ 
+/* Frosted gladd navbar */
 .custom-navbar {
   background-color: rgba(255, 255, 255, 0.6) !important;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-  z-index: 1030; 
+  border-bottom: 1px solid var(--bs-border-color);
+  z-index: 1030;
+}
+.navbar-brand {
+  color: var(--bs-primary);
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: var(--bs-card-bg);
+}
+
+.btn-primary:hover {
+  background-color: var(--bs-primary-hover);
+  border-color: var(--bs-primary-hover);
+}
+
+.btn-success {
+  background-color: var(--bs-success);
+  border-color: var(--bs-success);
+}
+
+.job-card {
+  border-left: 6px solid var(--bs-primary);
+}
+
+.badge-applied {
+  background-color: #a1cca5;  /* teal */
+  color: #f5f1e3;             /* cream text */
+}
+
+.badge-interview {
+  background-color: #087e8b;  /* warm beige */
+  color: #050505;             /* dark text */
+}
+
+.badge-offer {
+  background-color: #f4f269;  /* pure white */
+  color: #1b9aaa;             /* teal text */
+}
+
+.badge-rejected {
+  background-color: #dd6e42;  /* deep black */
+  color: #f5f1e3;             /* cream text */
+}
+.badge-planning {
+  background-color: #f5f1e3;  
+  color: #f5f1e3;             /* cream text */
 }
