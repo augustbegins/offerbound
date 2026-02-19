@@ -5,7 +5,7 @@ module JobApplicationsHelper
       "badge-applied"
     when "interviewing"
       "badge-interview"
-    when "offer"
+    when "offered"
       "badge-offer"
     when "rejected"
       "badge-rejected"
