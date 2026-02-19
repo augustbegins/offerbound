@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def landing
     if user_signed_in?
-      redirect_to :job_application
+      redirect_to :job_applications
     else
       render :landing
     end
