@@ -2,6 +2,13 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+document.addEventListener("DOMContentLoaded", () => {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+    new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+})
+
 // Change to true to allow Turbo
 Turbo.session.drive = false
 
