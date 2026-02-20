@@ -1,44 +1,55 @@
 <div class="card mb-3">
   <div class="card-body">
-      <% if rec.pending? %>
-        
-        <div class="d-flex justify-content-between align-items-baseline mb-1">
-          <%= link_to system_recommendation_path(rec.id, 
+    <% if rec.pending? %>
+
+      <div class="d-flex justify-content-between align-items-baseline mb-1 pb-1">
+        <%= link_to system_recommendation_path(rec.id, 
               status: :acted_on), 
             method: :patch, 
             class: "btn btn-sm btn-success d-flex align-items-center justify-content-center p-1", 
             style: "width: 20px; height: 20px;", 
             data: { bs_toggle: "tooltip" }, 
             title: "Completed" do %>
-            <i class="fa fa-check-square fa-2xs p-1"></i>
-          <% end %>
+          <i class="fa fa-check-square fa-2xs p-1"></i>
+        <% end %>
 
-          <div class="text-center">
-            <%= link_to job_application_path(rec.job_application), class: "text-decoration-none" do %>
-              <span class="text-muted fs-5">
-                <%= rec.job_application.job_title %> @ <%= rec.job_application.company_name %>
-              </span>
-            <% end %>
-          </div>
-          <%= button_to system_recommendation_path(rec.id, 
+        <div class="text-center">
+          <%= link_to job_application_path(rec.job_application), class: "text-decoration-none" do %>
+            <span class="text-muted fs-5">
+              <%= rec.job_application.job_title %> @ <%= rec.job_application.company_name %>
+            </span>
+          <% end %>
+        </div>
+        <%= button_to system_recommendation_path(rec.id, 
               status: :dismissed), 
             method: :patch, 
             class: "btn btn-sm btn-danger d-flex align-items-center justify-content-center p-1", 
             style: "width: 20px; height: 20px;", 
             data: { bs_toggle: "tooltip" }, 
             title: "Archive" do %>
-            <i class="fa fa-times-circle fa-2xs p-1"></i>
-          <% end %>
-        </div>
-      <% end %>
-
-      <div>
-        <i>
-          <%= rec.recommendation_type %>
-        </i>
-        <p class="mb-1 fs-4">
-          <%= rec.message %>
-        </p>
+          <i class="fa fa-times-circle fa-2xs p-1"></i>
+        <% end %>
       </div>
+    <% end %>
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mt-2 gap-2">
+      <div class="flex-grow-1">
+        <div class="text-uppercase small fw-semibold mb-1" style="color: #09637E;">
+          <%= rec.recommendation_type %>:
+        </div>
+        <div class="fs-4" style="color: #09637E;">
+          <%= rec.message %>
+        </div>
+      </div>
+      <div class="align-self-md-end align-self-end">
+        <%= link_to new_job_application_touchpoint_path(rec.job_application_id), 
+              class: "btn btn-primary btn-lg d-flex align-items-center justify-content-center p-1",
+              style: "width: 30px; height: 30px;",
+              data: { bs_toggle: "tooltip" }, 
+              title: "Create a Touchpoint" do %>
+          <i class="fa fa-pencil-square fa-xs"></i>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
