@@ -6,53 +6,62 @@
     </div>
   <% end %>
 
-  <div class="row align-items-center justify-content-center">
-    <div class="col-md-1 text-center">
+  <div class="row align-items-center justify-content-center g-0">
+    <div class="col-12 col-md-auto text-center">
       <% if @prev_job_app %>
         <%= link_to job_application_path(@prev_job_app), class: "btn btn-outline-primary" do %>
           <i class="fa-solid fa-chevron-left fa-3x"></i>
         <% end %>
       <% end %>
     </div>
-    <div class="d-flex justify-content-center mt-3">
-      <%= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
-    </div>
-    <div class="col-md-10">
-      <%= link_to job_application_touchpoints_path(@job_application.id), class: "text-decoration-none text-dark d-block" do %>
-        <div class="card mx-auto my-3" style="min-height: 24rem; max-width: 48rem;" >
+    <!--  <div class="d-flex justify-content-center mt-3">-->
+    <%#= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
+    <!--    </div>-->
+    <div class="col-12 col-md-auto">
+      <%= link_to job_application_touchpoints_path(@job_application), class: "text-decoration-none text-dark d-block" do %>
+        <div class="card mx-md-3 my-3" 
+            style="min-height: 24rem; max-width: 48rem; cursor: pointer;"
+            onclick="window.location='<%= job_application_touchpoints_path(@job_application) %>'">
           <div class="card-header d-flex justify-content-between flex-md-rown align-items-md-center gap-2">
+            <span>
+              <%= link_to edit_job_application_path(@job_application.id), 
+                    class: "position-absolute",
+                    style: "width: 20px; height: 20px; color: #09637E; ",
+                    data: { bs_toggle: "tooltip" }, 
+                    title: "Edit Application" do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+            </span>
             <div class="fw-semibold fs-5"> <%= @job_application.company_name %> </div>
-            <span class="badge rounded-pill text-bg-info"> <%= @job_application.status %> </span>
+            <span class="badge rounded-pill text-bg-secondary"> <%= @job_application.status %> </span>
             <div class="small text-muted"> Due: <%= @job_application.due_date.strftime("%b %d") %> </div>
           </div>
-          <div class="card-body">
-            <div class="position-relative mb-4 text-center">
-              <h5 class="text-uppercase fw-bold fs-4 m-0"> <%= @job_application.job_title %> </h5>
-
+          <div class="card-body d-flex flex-column">
+            <div class="position-relative text-center">
+              <h5 class="text-uppercase fw-bold fs-4 mt-2"> <%= @job_application.job_title %> </h5>
             </div>
 
-            <p class="text-center px-md-5"> <%= @job_application.job_description %></p>
+            <p class="text-center px-md-2 mt-auto"> <%= @job_application.job_description %></p>
 
-            <div class="row mt-4 g-2">
-              <div class="col-12 col-md-6">
-                <%= link_to( "Edit Application Details", edit_job_application_path(@job_application.id), class: "btn btn-secondary w-100" )%>
+            <div class="row mt-4 g-2 mt-auto">
+              <div class="col-12 text-end">
+                <%= link_to "Add New Touchpoint", 
+                    new_job_application_touchpoint_path(@job_application.id), 
+                    class: "btn btn-primary" %>
               </div>
-              <div class="col-12 col-md-6">
-                <%= link_to( "Add New Touchpoint", new_job_application_touchpoint_path(@job_application.id), class: "btn btn-primary w-100" )%>
-              </div>
-
             </div>
           </div>
 
         </div>
       <% end %>
+    </div>
 
-      <div class="col-md-1 text-center">
-        <% if @next_job_app %>
-          <%= link_to job_application_path(@next_job_app), class: "btn btn-outline-primary" do %>
-            <i class="fa-solid fa-chevron-right fa-3x"></i>
-          <% end %>
+    <div class="col-12 col-md-auto text-center">
+      <% if @next_job_app %>
+        <%= link_to job_application_path(@next_job_app), class: "btn btn-outline-primary" do %>
+          <i class="fa-solid fa-chevron-right fa-3x"></i>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
+</div>

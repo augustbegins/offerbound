@@ -16,9 +16,9 @@
   <div class="col-12 col-md-8 offset-md-2">
     <% @job_applications.each do |job_app| %>
     <%= link_to job_application_path(job_app.id), 
-            class: "text-decoration-none text-dark d-block", 
-            data: { bs_toggle: "tooltip" }, 
-            title: "Click for details" do %>
+          class: "text-decoration-none text-dark d-block", 
+          data: { bs_toggle: "tooltip" }, 
+          title: "Click for details" do %>
       <div class="card shadow-sm mb-5 border-0">
         <div class="card-body">
 
