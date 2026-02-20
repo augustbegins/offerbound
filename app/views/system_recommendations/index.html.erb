@@ -2,16 +2,37 @@
   Recommended Actions 
 </h2>
 
-<h4>
-  Pending
-</h4>
-<%= render partial: "recommendation", collection: @recommendations.pending, as: :rec %>
+<div class="d-flex flex-column gap-5">
+<% if @pending_recommendations_grouped.any? %>
+  <section>
+    <h4> Pending</h4>
+    <hr>
+    <% @pending_recommendations_grouped.each do |job_app, recs| %>
+      <h4 class="offset-1"><%= job_app.company_name %></h4>
+      <%= render partial: "recommendation", collection: recs, as: :rec %>
+    <% end %>
+  </section>
+<% end %>
 
-<h4> Completed </h4>
-<%= render partial: "recommendation", collection: @recommendations.acted_on, as: :rec %>
-<!--<p>-->
-  <%# @recommendations.acted_on.each do |recommendation| %>
-      <%#= recommendation.id %> 
-  <%# end %>
-<!--</p>
--->
+<% if @acted_on_recommendations_grouped.any? %>
+  <section>
+    <h4> Completed </h4>
+    <hr>
+    <% @acted_on_recommendations_grouped.each do |job_app, recs| %>
+      <h4><%= job_app.company_name %></h4>
+      <%= render partial: "recommendation", collection:recs, as: :rec %>
+    <% end %>
+  </section>
+<% end %>
+
+<% if @dismissed_recommendations_grouped.any? %>
+  <section>
+    <h4> Archived </h4>
+    <hr>
+    <% @dismissed_recommendations_grouped.each do |job_app, recs| %>
+      <h4><%= job_app.company_name %></h4>
+      <%= render partial: "recommendation", collection:recs, as: :rec %>
+    <% end %>
+  </section>
+<% end %>
+</div>

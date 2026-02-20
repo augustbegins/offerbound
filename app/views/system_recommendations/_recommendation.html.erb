@@ -1,40 +1,40 @@
 <div class="card mb-3">
   <div class="card-body">
-    <% if rec.pending? %>
-      <div class="d-flex justify-content-between align-items-baseline mb-1">
-        <%= link_to system_recommendations_path(rec, 
+      <% if rec.pending? %>
+        
+        <div class="d-flex justify-content-between align-items-baseline mb-1">
+          <%= link_to system_recommendation_path(rec.id, 
               status: :acted_on), 
             method: :patch, 
             class: "btn btn-sm btn-success d-flex align-items-center justify-content-center p-1", 
-            style: "width: 50px; height: 20px;" do %>
-          <span class="ms-1"> Done </span>
-          <i class="fa fa-check-square fa-2xs p-1"></i>
-        <% end %>
-
-        <div class="text-center">
-          <%= link_to job_application_path(rec.job_application), class: "text-decoration-none" do %>
-            <span class="text-muted fs-5">
-              <%= rec.job_application.job_title %> @ <%= rec.job_application.company_name %>
-            </span>
+            style: "width: 20px; height: 20px;" do %>
+            <i class="fa fa-check-square fa-2xs p-1"></i>
           <% end %>
-        </div>
-        <%= button_to system_recommendations_path(rec, 
+
+          <div class="text-center">
+            <%= link_to job_application_path(rec.job_application), class: "text-decoration-none" do %>
+              <span class="text-muted fs-5">
+                <%= rec.job_application.job_title %> @ <%= rec.job_application.company_name %>
+              </span>
+            <% end %>
+          </div>
+          <%= button_to system_recommendation_path(rec.id, 
               status: :dismissed), 
             method: :patch, 
             class: "btn btn-sm btn-danger d-flex align-items-center justify-content-center p-1", 
-            style: "width: 65px; height: 20px;" do %>
-          <span class="ms-1"> Dismiss </span>
-          <i class="fa fa-times-circle fa-2xs p-1"></i>
-        <% end %>
+            style: "width: 20px; height: 20px;" do %>
+            <i class="fa fa-times-circle fa-2xs p-1"></i>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div>
+        <i>
+          <%= rec.recommendation_type %>
+        </i>
+        <p class="mb-1 fs-4">
+          <%= rec.message %>
+        </p>
       </div>
-    <% end %>
-    <div>
-      <i>
-        <%= rec.recommendation_type %> :
-      </i>
-      <p class="mb-1 fs-4">
-        <%= rec.message %>
-      </p>
-    </div>
   </div>
 </div>
