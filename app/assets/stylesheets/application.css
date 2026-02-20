@@ -32,7 +32,7 @@ body {
 }
 
 p, small, .text-muted {
-  color: var(--bs-secondary) !important;
+  color: var(--bs-secondary);
 }
 
 .container {
@@ -139,4 +139,8 @@ background-color: transparent !important;
 .badge-planning {
   background-color: #f5f1e3;  
   color: #f5f1e3;             /* cream text */
+}
+
+.recommendation-text {
+  color: #0e0e0e;
 }
