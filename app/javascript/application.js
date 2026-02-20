@@ -2,12 +2,22 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+// Tooltips
 document.addEventListener("DOMContentLoaded", () => {
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
   tooltipTriggerList.forEach(function (tooltipTriggerEl) {
     new bootstrap.Tooltip(tooltipTriggerEl)
   })
 })
+
+// Toasts
+document.addEventListener("DOMContentLoaded", () => {
+  const toastEl = document.getElementById('myToast');
+  if (toastEl) {
+    const toast = new bootstrap.Toast(toastEl, { autohide: false });
+    toast.show(); 
+  }
+});
 
 // Change to true to allow Turbo
 Turbo.session.drive = false
