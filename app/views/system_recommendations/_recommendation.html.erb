@@ -7,7 +7,9 @@
               status: :acted_on), 
             method: :patch, 
             class: "btn btn-sm btn-success d-flex align-items-center justify-content-center p-1", 
-            style: "width: 20px; height: 20px;" do %>
+            style: "width: 20px; height: 20px;", 
+            data: { bs_toggle: "tooltip" }, 
+            title: "Completed" do %>
             <i class="fa fa-check-square fa-2xs p-1"></i>
           <% end %>
 
@@ -22,7 +24,9 @@
               status: :dismissed), 
             method: :patch, 
             class: "btn btn-sm btn-danger d-flex align-items-center justify-content-center p-1", 
-            style: "width: 20px; height: 20px;" do %>
+            style: "width: 20px; height: 20px;", 
+            data: { bs_toggle: "tooltip" }, 
+            title: "Archive" do %>
             <i class="fa fa-times-circle fa-2xs p-1"></i>
           <% end %>
         </div>
