@@ -1,75 +1,73 @@
 <div class="container">
 
+  <div class="container col-md-8 offset-md-2 mb-4">
 
-    <div class="d-flex justify-content-between align-items-center">
-    <h3 class="col-6 col-md-8 offset-md-2"> Job Applications </h3>
-    <div class="col-6 col-md-1 ps-2 position-relative" style="z-index: 10;">
+    <div class="d-flex align-items-center">
+      <h3 class="mb-0 me-2 me-md-3"> Job Applications </h3>
       <%= link_to new_job_application_path, 
-            class: "btn btn-primary btn-sm", 
+            class: "btn btn-outline-primary btn-lg", 
             data: { bs_toggle: "tooltip" }, 
             title: "New Application" do %>
         <i class="fa fa-plus-circle"></i>
       <% end %>
     </div>
-    </div>
+  </div>
 
-  <div class="col-12 col-md-8 offset-md-2">
+  <div class="col-12 col-md-6 offset-md-2">
     <% @job_applications.each do |job_app| %>
-    <%= link_to job_application_path(job_app.id), 
+      <%= link_to job_application_path(job_app.id), 
           class: "text-decoration-none text-dark d-block", 
           data: { bs_toggle: "tooltip" }, 
           title: "Click for details" do %>
-      <div class="card shadow-sm mb-5 border-0">
-        <div class="card-body">
+        <div class="card shadow-sm mb-5 border-0">
+          <div class="card-body pt-4 pb-1 px-4">
 
-          <!-- Top Row -->
-          <div class="d-flex justify-content-between align-items-start">
+            <!-- Top Row -->
+            <div class="d-flex justify-content-between align-items-start">
+              <div class="flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 class="mb-1 fw-semibold">
+                      <%= job_app.job_title %>
+                      <span class="fst-italic text-muted small">
+                        || <%= job_app.company_name %>
+                      </span>
+                    </h5>
+                  </div>
+                </div>
+              </div>
 
-            <div>
-              <h5 class="mb-1 fw-semibold">
-                <%= job_app.job_title %>
-              </h5>
-              <h6 class="fst-italic">
-                <%= job_app.company_name %>
-              </h6>
+              <span class="badge px-2 py-1 px-md-3 py-md-2 small <%= status_badge_class(job_app.status) %>">
+                <%= job_app.status %>
+              </span>
 
-              <small class="text-muted">
-                application due: <%= job_app.due_date.strftime("%b %d, %Y") %>
-              </small>
             </div>
 
-          </div>
-
-          <!-- Status Badge -->
-          <div class="mt-2">
-            <span class="badge px-3 py-2 <%= status_badge_class(job_app.status) %>">
-              <%= job_app.status %>
-            </span>
-          </div>
-
-          <!-- Actions -->
-          <div class="d-flex justify-content-start gap-3 mt-3">
-            <%= link_to edit_job_application_path(job_app.id), 
-                  class: "text-dark", 
+            <!-- Actions -->
+            <div class="d-flex gap-4 mt-2 pt-2 justify-content-between align-items-center border-top">
+              <%= link_to edit_job_application_path(job_app.id), 
+                  class: "btn btn-sm btn-outline-primary d-flex align-items-center justify-content-center", 
+                  style: "width: 20px; height: 20px;", 
                   data: { bs_toggle: "tooltip" }, 
                   title: "Edit Application" do %>
-              <i class="fa fa-pencil"></i>
-            <% end %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
 
-            <%= link_to job_application_path(job_app.id), 
-                  class: "text-muted", 
+              <%= link_to job_application_path(job_app.id), 
+                  class: "btn btn-sm btn-outline-danger border-0 d-flex align-items-center justify-content-center", 
+                  style: "width: 20px; height: 20px;",
                   method: :delete,
                   data: { bs_toggle: "tooltip", 
                           confirm: "Are you sure?" },
                   title: "Delete Application" do %>
-              <i class="fa fa-trash"></i>
-            <% end %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+            </div>
+
           </div>
-
         </div>
-      </div>
 
-    <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
