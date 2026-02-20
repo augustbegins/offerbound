@@ -26,16 +26,18 @@
     <%#= link_to 'New Job Application', new_job_application_path, class: "btn btn-primary btn-sm" %>
     <!--    </div>-->
     <div class="col-12 col-md-auto">
-      <%= link_to job_application_touchpoints_path(@job_application), class: "text-decoration-none text-dark d-block" do %>
         <div class="card mx-md-3 my-3" 
             style="min-height: 24rem; max-width: 48rem; cursor: pointer;"
-            onclick="window.location='<%= job_application_touchpoints_path(@job_application) %>'">
+            onclick="window.location='<%= job_application_touchpoints_path(@job_application) %>'"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="View Touchpoints">
           <div class="card-header d-flex justify-content-between flex-md-rown align-items-md-center gap-2">
             <span>
               <%= link_to edit_job_application_path(@job_application.id), 
                     class: "position-absolute",
                     style: "width: 20px; height: 20px; color: #09637E; ",
-                    data: { bs_toggle: "tooltip" }, 
+                    data: { bs_toggle: "tooltip", bs_placement: "top" }, 
                     title: "Edit Application" do %>
                 <i class="fa fa-pencil"></i>
               <% end %>
@@ -61,7 +63,6 @@
           </div>
 
         </div>
-      <% end %>
     </div>
 
     <div class="col-12 col-md-auto text-center">
