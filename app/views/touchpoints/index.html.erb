@@ -28,7 +28,7 @@
     <div class="col-2 col-md-1">
       <% if @next_job_app %>
         <%= link_to job_application_touchpoints_path(@next_job_app), class: "btn btn-outline-primary btn-sm" do %>
-          <i class="fa-solid fa-chevron-right fa-sm"></i>
+          <i class="fa-solid fa-chevron-right fa-lg"></i>
         <% end %>
       <% end %>
     </div>
@@ -38,12 +38,15 @@
 <div class="container mt-5">
   <div class="row mb-3">
     <div class="col-12 col-md-8 offset-md-2">
-      <div class="d-flex align-items-center justify-content-evenly">
+      <div class="d-flex align-items-baseline justify-content-center">
         <h4 class="fw-semibold">
           Timeline
         </h4>
         <div class="text-center">
-          <%= link_to new_job_application_touchpoint_path(@job_application.id), class: "btn btn-outline-success btn-small" do %>
+          <%= link_to new_job_application_touchpoint_path(@job_application.id), 
+                class: "btn btn-outline-primary btn-lg", 
+                data: { bs_toggle: "tooltip" }, 
+                title: "New Touchpoint" do %>
             <i class="fa fa-plus-circle"></i>
           <% end %>
         </div>
