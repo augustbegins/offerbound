@@ -75,13 +75,13 @@ background-color: transparent !important;
 
 .breadcrumb-item a {
   text-decoration: none;
-  color: #09637E;
+  color: #1f1d1d;
   font-weight: 500;
 }
 
 .breadcrumb-item.active {
   font-weight: 600;
-  color: #1f1d1d;
+  color: #09637E;
 }
 
 /* Frosted gladd navbar */
