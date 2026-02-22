@@ -29,15 +29,23 @@
             <%= form.select :status, JobApplication.statuses.keys, class: "form-select form-select-lg" %>
           </div>
         </div>
-        <div class=" row justify-content-between">
-          <div class="col-md-1">
-            <%= link_to job_applications_path, class: "btn btn-secondary mt-5" do %>
+        <div class=" row justify-content-end justify-content-md-evenly mt-4">
+          <div class="col-2 col-md-2 offset-md-1">
+            <%= link_to job_applications_path, 
+                  class: "btn btn-lg btn-outline-secondary  d-flex align-items-center justify-content-center",
+                  style: "width: 30px; height: 30px;", 
+                  data: { bs_toggle: "tooltip" },
+                  title: "Cancel" do %>
               <i class="fa fa-undo"></i>
             <% end %>
           </div>
-          <div class="col-md-3">
-            <%= form.button class: "btn btn-success mt-5" do  %>
-              <i class="fa fa-check-square"></i>
+          <div class="col-2 col-md-2">
+            <%= form.button :submit,
+                class: "btn btn-lg btn-primary d-flex align-items-center justify-content-center",
+                style: "width: 30px; height: 30px;", 
+                data: { bs_toggle: "tooltip" },
+                title: "Save" do %>
+              <i class="fa fa-check"></i>
             <% end %>
           </div>
         </div>
