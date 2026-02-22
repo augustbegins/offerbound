@@ -1,8 +1,8 @@
 <div class="container my-4">
 
-  <div class="row justify-content-between align-items-center">
+  <div class="d-flex justify-content-between align-items-center">
 
-    <div class="col-2 col-md-1">
+    <div class="col-1 col-md-1">
       <% if @prev_job_app %>
         <%= link_to job_application_touchpoints_path(@prev_job_app), class: "btn btn-outline-primary btn-sm" do %>
           <i class="fa-solid fa-chevron-left fa-sm"></i>
@@ -10,22 +10,22 @@
       <% end %>
     </div>
 
-    <div class="col-8 col-md-8">
-      <div class="card shadow-sm">
+    <div class="col-10 col-md-8">
+      <div class="card shadow-sm h-100">
         <div class="card-body text-center">
-          <h4 class="fw-semibold mb-2">
+          <h4 class="fw-semibold mb-1">
             <%= @job_application.job_title.upcase_first %>
           </h4>
           <div class="text-muted mb-3">
             at <%= @job_application.company_name%>
           </div>
-          <p class="mb-0">
+          <p class="mb-0 small line-clamp-4">
             <%= @job_application.job_description %>
           </p>
         </div>
       </div>
     </div>
-    <div class="col-2 col-md-1">
+    <div class="col-1 col-md-1">
       <% if @next_job_app %>
         <%= link_to job_application_touchpoints_path(@next_job_app), class: "btn btn-outline-primary btn-sm" do %>
           <i class="fa-solid fa-chevron-right fa-lg"></i>

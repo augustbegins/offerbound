@@ -15,7 +15,7 @@
   --bs-body-bg: #e8f9ff;        /* page background */
   --card-bg: #ffffff;        /* card background */
   --bs-body-color: #050505;     /* main text */
-  --bs-secondary: #7AB2B2;      /* muted / secondary text */
+  --bs-secondary: #134074;      /* muted / secondary text */
   --bs-primary: #09637E;        /* buttons / primary links */
   --bs-primary-hover: #088395;  /* hover buttons */
   --bs-border-color: rgba(5,5,5,0.08); /* subtle borders */
@@ -156,4 +156,11 @@ background-color: transparent !important;
 
 .recommendation-text {
   color: #0e0e0e;
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;      /* number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
