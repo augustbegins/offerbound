@@ -1,11 +1,11 @@
 <div class="container my-4">
 
-  <div class="d-flex justify-content-between align-items-center">
+  <div class="row justify-content-between align-items-center offset-md-1">
 
-    <div class="col-1 col-md-1">
+    <div class="col-1 col-md-auto">
       <% if @prev_job_app %>
         <%= link_to job_application_touchpoints_path(@prev_job_app), class: "btn btn-outline-primary btn-sm" do %>
-          <i class="fa-solid fa-chevron-left fa-sm"></i>
+          <i class="fa-solid fa-chevron-left fa-lg"></i>
         <% end %>
       <% end %>
     </div>
@@ -36,8 +36,8 @@
 </div>
 
 <div class="container mt-5">
-  <div class="row mb-3">
-    <div class="col-12 col-md-8 offset-md-2">
+  <div class="row mb-3 offset-md-3">
+    <div class="col-12 col-md-8">
       <div class="d-flex align-items-baseline justify-content-center">
         <h4 class="fw-semibold">
           Timeline
