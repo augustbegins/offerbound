@@ -2,8 +2,8 @@
 
   <% if @recommendations.any? %>
     <%= render "shared/toasts", 
-          message: "You have <%= link_to "recommended actions", system_recommendations_path, style: "color: #09637E;" %> for this job application.",
-          css_class: "info" %>
+          message: "You have #{ link_to("recommended actions", system_recommendations_path)} for this job application.".html_safe,
+          css_class: "text-info-emphasis" %>
   <% end %>
 
   <div class="row align-items-center justify-content-center g-0">
@@ -33,7 +33,7 @@
               <% end %>
             </span>
             <div class="fw-semibold fs-5"> <%= @job_application.company_name %> </div>
-            <span class="badge rounded-pill text-bg-secondary"> <%= @job_application.status %> </span>
+            <span class="badge rounded-pill <%= status_badge_class(@job_application.status) %>"> <%= @job_application.status %> </span>
             <div class="small text-muted"> Due: <%= @job_application.due_date.strftime("%b %d") %> </div>
           </div>
           <div class="card-body d-flex flex-column">

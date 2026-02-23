@@ -13,4 +13,20 @@ module JobApplicationsHelper
       "badge-planning"
     end 
   end
+
+  def category_badge_class(category)
+    case category.to_s.downcase
+    when "reflection"
+      "badge-applied"
+    when "interview"
+      "badge-interview"
+    when "outreach"
+      "badge-planning"
+    when "inbound_email"
+      "badge-rejected"
+    when "other"
+      "badge-offer"
+    end
+  end
+
 end

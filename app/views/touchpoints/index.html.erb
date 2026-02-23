@@ -68,7 +68,7 @@
               <small class="text-muted">
                 <%= touchpoint.occurred_at.strftime("%b %d") %>
               </small>
-              <span class="badge bg-light text-dark border">
+              <span class="badge <%= category_badge_class(touchpoint.category) %>">
                 <%= touchpoint.category %>
               </span>
             </div>
