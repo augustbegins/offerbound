@@ -1,7 +1,9 @@
 <div class="container py-3">
 
   <% if @recommendations.any? %>
-    <%= render "shared/toasts" %>
+    <%= render "shared/toasts", 
+          message: "You have <%= link_to "recommended actions", system_recommendations_path, style: "color: #09637E;" %> for this job application.",
+          css_class: "info" %>
   <% end %>
 
   <div class="row align-items-center justify-content-center g-0">

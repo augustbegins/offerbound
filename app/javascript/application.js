@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const toastEl = document.getElementById('myToast');
   if (toastEl) {
-    const toast = new bootstrap.Toast(toastEl, { autohide: false });
+    const toast = new bootstrap.Toast(toastEl);
     toast.show(); 
   }
 });
