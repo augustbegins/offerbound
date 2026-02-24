@@ -16,7 +16,17 @@ class Touchpoint < ApplicationRecord
   enum :category, { inbound_email: 0, outreach: 1, interview: 2, reflection: 3, other: 4 }
   validates :category, :short_description, :notes, :occurred_at, presence: true
 
+  after_create_commit :enqueue_recommendation_pipeline
+
   scope :within_job_applications, ->(job_apps) {
           joins(:job_application).merge(job_apps)
         }
+  after_create_commit :enqueue_recommendation_pipeline
+
+  private
+
+  def enqueue_recommendation_pipeline
+    Rails.logger.debug "PIPELINE FIRING"
+    Recommendations::TouchpointOnCreate.call(self)
+  end
 end
