@@ -1,42 +1,4 @@
-<h2 class="mb-4">
-  Recommended Actions 
-</h2>
-
-<div class="container justify-content-center d-flex">
-  <div class="row justify-content-start">
-    <div class="col-md-12 gap-5">
-      <% if @pending_recommendations_grouped.any? %>
-        <section>
-          <h4 style="color: #09637E;">Pending</h4>
-          <hr>
-          <% @pending_recommendations_grouped.each do |job_app, recs| %>
-            <h4 class="offset-1"><%= job_app.company_name %></h4>
-            <%= render partial: "recommendation", collection: recs, as: :rec %>
-          <% end %>
-        </section>
-      <% end %>
-
-      <% if @acted_on_recommendations_grouped.any? %>
-        <section>
-          <h4 style="color: #09637E;"> Completed </h4>
-          <hr>
-          <% @acted_on_recommendations_grouped.each do |job_app, recs| %>
-            <h4><%= job_app.company_name %></h4>
-            <%= render partial: "recommendation", collection:recs, as: :rec %>
-          <% end %>
-        </section>
-      <% end %>
-
-      <% if @dismissed_recommendations_grouped.any? %>
-        <section>
-          <h4 style="color: #09637E;"> Archived </h4>
-          <hr>
-          <% @dismissed_recommendations_grouped.each do |job_app, recs| %>
-            <h4><%= job_app.company_name %></h4>
-            <%= render partial: "recommendation", collection:recs, as: :rec %>
-          <% end %>
-        </section>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render partial: "index_nav" %>
+<% @recommendations.each do |rec| %>
+  <%= render "recommendation", rec: rec %>
+<% end %>

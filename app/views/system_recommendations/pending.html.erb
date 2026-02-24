@@ -1,0 +1,6 @@
+<%= render partial: "index_nav" %>
+
+<% @pending_recommendations_grouped.each do |job_app, recs| %>
+  <h5 class="offset-2"><%= job_app.company_name %></h5>
+  <%= render partial: "recommendation", collection: recs, as: :rec %>
+<% end %>
