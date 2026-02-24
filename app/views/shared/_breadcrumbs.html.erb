@@ -37,9 +37,9 @@
           <li class="breadcrumb-item">
             <%= link_to "Next Steps", system_recommendations_path %>
           </li>
-          <% if @job_application %>
-            <li class="breadcrumb-item">
-              <%= link_to @job_application.job_title + " at " + @job_application.company_name + " App", job_application_path(@job_application) %>
+          <% if controller_name == "system_recommendations" && action_name != "index" %>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= action_name.titleize %>
             </li>
           <% end %>
         <% end %>
