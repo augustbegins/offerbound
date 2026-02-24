@@ -1,18 +1,6 @@
 class SystemRecommendationsController < ApplicationController
   def index
     @recommendations = current_user_recommendations.order(created_at: :desc)
-    @pending_recommendations_grouped = current_user_recommendations.where({ status: :pending })
-                                                                  .includes(:job_application)
-                                                                  .order("job_applications.company_name ASC")
-                                                                  .group_by(&:job_application)
-    @acted_on_recommendations_grouped = current_user_recommendations.where({ status: :acted_on })
-                                                                  .includes(:job_application)
-                                                                  .order("job_applications.company_name ASC")
-                                                                  .group_by(&:job_application)
-    @dismissed_recommendations_grouped = current_user_recommendations.where({ status: :dismissed })
-                                                                  .includes(:job_application)
-                                                                  .order("job_applications.company_name ASC")
-                                                                  .group_by(&:job_application)
   end
 
   def update
@@ -22,6 +10,27 @@ class SystemRecommendationsController < ApplicationController
     else
       redirect_back fallback_location: root_path, :alert => @recommendation.errors.full_messages.to_sentence
     end
+  end
+
+  def pending
+    @pending_recommendations_grouped = current_user_recommendations.where({ status: :pending })
+                                                                  .includes(:job_application)
+                                                                  .order("job_applications.company_name ASC")
+                                                                  .group_by(&:job_application)
+  end
+
+  def completed
+    @acted_on_recommendations_grouped = current_user_recommendations.where({ status: :acted_on })
+                                                                  .includes(:job_application)
+                                                                  .order("job_applications.company_name ASC")
+                                                                  .group_by(&:job_application)
+  end
+
+  def archived
+    @dismissed_recommendations_grouped = current_user_recommendations.where({ status: :dismissed })
+                                                                  .includes(:job_application)
+                                                                  .order("job_applications.company_name ASC")
+                                                                  .group_by(&:job_application)
   end
 
   private
