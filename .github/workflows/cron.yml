@@ -16,11 +16,11 @@ jobs:
       - name: Touchpoint Recommendations
         uses: fjogeleit/http-request-action@v1
         with:
-          url: ${{ secrets.RENDER_CRON_URL }}?task=touchpoints
+          url: ${{ secrets.RENDER_CRON_URL }}&task=touchpoints
           method: GET
 
       - name: Job Application Follow-Ups
         uses: fjogeleit/http-request-action@v1
         with:
-          url: ${{ secrets.RENDER_CRON_URL }}task=jobapps
+          url: ${{ secrets.RENDER_CRON_URL }}&task=jobapps
           method: GET
