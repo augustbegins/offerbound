@@ -1,5 +1,6 @@
 class CronController < ApplicationController
   def run
+    Rails.logger.info "CRON TRIGGERED: #{params[:task]}"
     return head :unauthorized unless params[:token] == ENV["CRON_SECRET"]
 
     case params[:task]
