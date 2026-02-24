@@ -14,13 +14,18 @@ jobs:
 
     steps:
       - name: Touchpoint Recommendations
+        continue-on-error: true
         uses: fjogeleit/http-request-action@v1
         with:
           url: ${{ secrets.RENDER_CRON_URL }}&task=touchpoints
           method: GET
+          timeout: 60000
+
 
       - name: Job Application Follow-Ups
+        continue-on-error: true
         uses: fjogeleit/http-request-action@v1
         with:
           url: ${{ secrets.RENDER_CRON_URL }}&task=jobapps
           method: GET
+          timeout: 60000
