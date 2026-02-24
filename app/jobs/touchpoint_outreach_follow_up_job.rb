@@ -7,4 +7,5 @@ class TouchpointOutreachFollowUpJob < ApplicationJob
 
     Recommendations::Generators::OutreachFollowUp.call(touchpoint)
   end
+  
 end
