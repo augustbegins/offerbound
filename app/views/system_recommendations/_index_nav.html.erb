@@ -1,0 +1,22 @@
+<h3 class="mb-4" style="color: #09637E;">
+  Recommended Actions 
+</h3>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item active">
+        <%= active_link_to "All", system_recommendations_path, class:"nav-link nav-link-text", active: :exclusive %>
+      </li>
+      <li class="nav-item">
+        <%= active_link_to "Pending", pending_recommendations_path, class:"nav-link nav-link-text" %>
+      </li>
+      <li class="nav-item">
+        <%= active_link_to "Completed", completed_recommendations_path, class:"nav-link nav-link-text" %>
+      </li>
+      <li class="nav-item">
+        <%= active_link_to "Archived", archived_recommendations_path, class:"nav-link nav-link-text" %>
+      </li>
+    </ul>
+  </div>
+</div>
