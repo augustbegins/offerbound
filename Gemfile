@@ -60,6 +60,7 @@ gem "appdev_support"                  # Learning helpers (nicer error messages, 
 # Feature Gems - AI
 # ==============================================================================
 gem "ai-chat", "~> 0.5.4"             # AI::Chat integration via OpenAI APIs
+gem "active_link_to"
 
 # ==============================================================================
 # Development & Test - Debugging & Testing
