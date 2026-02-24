@@ -45,7 +45,7 @@
       <div class="row mb-4">
         <div class="col-md-6 offset-md-3">
           <% if notice.present? %>
-            <%= render "shared/toasts", message: notice, css_class: "success" %>
+            <%= render "shared/toasts", message: notice, css_class: "text-success border-0" %>
           <% end %>
 
           <% if alert.present? %>
