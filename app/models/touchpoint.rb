@@ -26,7 +26,6 @@ class Touchpoint < ApplicationRecord
   private
 
   def enqueue_recommendation_pipeline
-    Rails.logger.debug "PIPELINE FIRING"
     Recommendations::TouchpointOnCreate.call(self)
   end
 end
