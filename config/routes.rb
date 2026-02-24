@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   #------------------------------
   devise_for :users
   root to: "pages#landing"
+
+  # cron jobs
+  namespace :cron do
+    get :run
+  end
 end

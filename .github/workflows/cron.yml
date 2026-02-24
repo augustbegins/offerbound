@@ -1,0 +1,26 @@
+name: Scheduled Jobs
+
+on: 
+  schedule: 
+    # run touchpoint recommendations every 5 minutes 
+    - cron: '*/5 * * * *'
+    # run job application follow ups every day at 9 am
+    - cron: '0 9 * * *'
+  workflow_dispatch: # optional: allow manual run
+
+jobs: 
+  run-scheduled-tasks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Touchpoint Recommendations
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.RENDER_CRON_URL }}?task=touchpoints
+          method: GET
+
+      - name: Job Application Follow-Ups
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.RENDER_CRON_URL }}task=jobapps
+          method: GET
