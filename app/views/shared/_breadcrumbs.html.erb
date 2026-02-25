@@ -13,7 +13,7 @@
             </li>
           <% elsif @job_application %>
             <li class="breadcrumb-item active" aria-current="page">
-              <%= @job_application.company_name %> App
+              <%= @job_application.job_title %> || <%= @job_application.company_name %>
             </li>
           <% end %>
         <% end %>
