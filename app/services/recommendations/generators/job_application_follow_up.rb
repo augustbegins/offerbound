@@ -10,7 +10,6 @@ module Recommendations
       end
 
       def call
-        return if already_has_follow_up?
         create_follow_up_recommendation
       end
 

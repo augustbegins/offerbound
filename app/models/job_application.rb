@@ -26,7 +26,7 @@ class JobApplication < ApplicationRecord
 
   def generate_initial_recommendations
     Recommendations::JobApplicationOnCreateGenerator.call(self)
-
-    JobApplicationFollowUpJob.set(wait: 7.days).perform_later(id)
+    wait_time = Rails.env.development? ? 5.seconds : 120.seconds
+    JobApplicationFollowUpJob.set(wait: wait_time).perform_later(id)
   end
 end
