@@ -31,7 +31,7 @@
         <ul class="navbar-nav me-5">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.username.upcase %>
+              <%= current_user.username.present? ? current_user.username.upcase : current_user.email.split('@').first %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
