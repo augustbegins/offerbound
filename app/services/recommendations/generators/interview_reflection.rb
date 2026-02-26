@@ -16,7 +16,7 @@ module Recommendations
 
         touchpoint.job_application.system_recommendations.create!(
           recommendation_type: :post_interview_reflection,
-          message: "TTest34. Take a few minutes to reflect after your interview today.",
+          message: "Take a few minutes to reflect after your interview today.",
           status: :pending
         )
       end

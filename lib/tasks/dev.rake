@@ -145,7 +145,7 @@ unless Rails.env.production?
             user: user,
             company_name: seed[:company_name],
             job_title: seed[:job_title],
-            due_date: Faker::Date.forward(days: 23),
+            due_date: Faker::Date.forward(days: 6),
             job_description: seed[:job_description],
             status: ["planning", "applied", "interviewing", "offered", "rejected"].sample,
           )
@@ -154,7 +154,7 @@ unless Rails.env.production?
           seed[:touchpoints].shuffle.take(3).each do |tp_seed|
             touchpoint = Touchpoint.create(
               job_application_id: job_app.id,
-              occurred_at: Faker::Date.between(from: 12.days.ago, to: Date.today),
+              occurred_at: Faker::Date.between(from: 14.days.ago, to: Date.today),
               category: ["inbound_email", "outreach", "interview", "reflection", "other"].sample,
               notes: tp_seed[:notes],
               short_description: tp_seed[:short_description],
