@@ -5,7 +5,7 @@
 - Project Name: OfferBound
 - Reviewer Name: Claude, Ian Heraty, Adolfo Nava
 - Repository URL: <https://github.com/Ljpeg/offerbound>
-- Feedback Pull Request URL: <>
+- Feedback Pull Request URL: <https://github.com/Ljpeg/offerbound/pull/8>
 
 ---
 
